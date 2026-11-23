@@ -1,0 +1,496 @@
+{
+  "meta": {
+    "title": "Alex Georgiev — AI & Automation Developer · Founder of AGility",
+    "description": "Alex Georgiev builds AI systems that run real businesses: chatbots, enquiry automation and data tools. He also runs one, AGility, an AI automation agency based in Burgas, Bulgaria."
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "home": "Alex Georgiev, home",
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "book": "Book a call",
+    "menu": "Menu",
+    "close": "Close",
+    "primary": "Primary",
+    "language": "Language",
+    "switchTo": "Switch to Bulgarian",
+    "palette": "Open command palette",
+    "cv": "Download CV",
+    "studies": "Studies"
+  },
+  "island": {
+    "available": "Available for work",
+    "hero": "Available for work",
+    "proof": "Stack & facts",
+    "ledgers": "Developer × Founder",
+    "work": "Selected work",
+    "services": "Services",
+    "process": "Process",
+    "capabilities": "Capabilities",
+    "milestones": "Milestones",
+    "about": "About",
+    "contact": "Reply within 24h",
+    "what": "What I do",
+    "studies": "Studies",
+    "caps": "Capabilities"
+  },
+  "preloader": {
+    "boot": "initialising agility.os",
+    "skip": "Press any key to skip"
+  },
+  "hero": {
+    "tag": "AI automation · Python · Founder",
+    "openTo": "Open to remote · part-time or full-time · AI, automation & Python roles",
+    "openToShort": "Open to remote AI & Python roles",
+    "rolesLabel": "Now",
+    "roles": [
+      "AI Automation Developer",
+      "Python & Data",
+      "Founder, AGility"
+    ],
+    "ctaWork": "See the work",
+    "ctaCv": "Download CV",
+    "based": "Based in Burgas, BG",
+    "time": "Local time",
+    "open": "Open to remote roles",
+    "founder": "AGility founder",
+    "scroll": "Scroll",
+    "channels": [
+      "manual work",
+      "scattered data",
+      "lost leads",
+      "slow replies",
+      "guesswork"
+    ],
+    "index": "Introduction",
+    "hi": "Hi, I’m",
+    "name": "Alex Georgiev.",
+    "intro": "Developer and founder from Burgas, Bulgaria. I’m a high-school student at VSCPI, specialising in AI programming. I also run AGility, an AI automation agency, and build systems that real businesses use every day.",
+    "ctaWhat": "What I do",
+    "portraitAlt": "Portrait of Alex Georgiev",
+    "fig": "Fig. 01 — Alex Georgiev, Burgas"
+  },
+  "proof": {
+    "label": "Stack",
+    "facts": [
+      {
+        "n": "[[N]]",
+        "caption": "Shipped demos, live and on GitHub"
+      },
+      {
+        "n": "2",
+        "caption": "Competitions: IRO Vienna & John Atanasov"
+      },
+      {
+        "n": "1",
+        "caption": "Company founded: AGility"
+      },
+      {
+        "n": "24h",
+        "caption": "Reply time, every message"
+      }
+    ]
+  },
+  "ledgers": {
+    "index": "Developer × Founder",
+    "meta": "Two roles",
+    "title": "One person. <em>Two</em> ledgers.",
+    "devLabel": "Ledger 01 — The developer",
+    "founderLabel": "Ledger 02 — The founder",
+    "file": "enquiry/extract.py",
+    "running": "typing",
+    "done": "ready",
+    "devPoints": [
+      "Python and data fundamentals: Pandas, NumPy, regression. Not just API calls.",
+      "LLM systems that return structured, validated output you can build on.",
+      "Full stack to production: Next.js, TypeScript, Vercel."
+    ],
+    "invoice": "AGility · Engagement ledger",
+    "invoiceNo": "No. 0001",
+    "rows": [
+      {
+        "k": "Services",
+        "v": "Enquiry automation · AI chatbots · Internal tools · Data analysis"
+      },
+      {
+        "k": "Engagement",
+        "v": "[[ENGAGEMENT MODEL: e.g. fixed-scope build, then monthly care]]"
+      },
+      {
+        "k": "Process",
+        "v": "Diagnose → Prototype → Ship → Measure"
+      },
+      {
+        "k": "Response time",
+        "v": "Within 24 hours"
+      },
+      {
+        "k": "Point of contact",
+        "v": "Alex Georgiev, start to finish"
+      }
+    ],
+    "total": "Owner",
+    "totalValue": "One person, accountable",
+    "founderPoints": [
+      "Scoping: turning “we’re drowning in messages” into a build with a clear finish line.",
+      "Client communication in plain language. Demos, not status reports.",
+      "Owning delivery, from the first call to well after launch."
+    ],
+    "close": "Most developers can build it. Most founders can sell it. <em>I do both.</em>"
+  },
+  "work": {
+    "index": "Selected work",
+    "meta": "2025—2026",
+    "title": "Work on the <em>record</em>.",
+    "lede": "Client systems, products and competition builds. Each one says what my role was and what I personally built.",
+    "cols": {
+      "project": "Project",
+      "type": "Context",
+      "year": "Year",
+      "stack": "Stack",
+      "status": "Status"
+    },
+    "status": {
+      "live": "Live",
+      "production": "In production",
+      "competition": "Competition",
+      "internal": "Internal",
+      "demo": "Client demo"
+    },
+    "role": "Role",
+    "built": "I built",
+    "team": "Team",
+    "live": "Live demo",
+    "code": "Code",
+    "caseStudy": "Read the case study",
+    "open": "Open",
+    "mediaMissing": "Media pending",
+    "all": "All projects & code",
+    "allOn": "on GitHub"
+  },
+  "what": {
+    "index": "What I do",
+    "meta": "Four disciplines",
+    "title": "I build AI systems that <em>run</em> businesses — and I run one.",
+    "lede": "Four things, done properly. Hover or scroll through them; each one is running live on the right.",
+    "items": [
+      {
+        "k": "Automate",
+        "line": "Enquiries, leads and busywork, handled by AI and routed to the right person.",
+        "tag": "LLM · Viber · Meta · Email"
+      },
+      {
+        "k": "Build",
+        "line": "Chatbots, assistants and internal tools. From a prototype in days to production.",
+        "tag": "Next.js · TypeScript · RAG"
+      },
+      {
+        "k": "Analyse",
+        "line": "Python and Pandas on real data. Questions in, answers and charts out.",
+        "tag": "Python · Pandas · NumPy"
+      },
+      {
+        "k": "Run",
+        "line": "AGility, my agency. Scoping, clients and delivery: the business side, owned.",
+        "tag": "Founder · AGility"
+      }
+    ],
+    "demo": {
+      "inbound": "Inbound · any channel",
+      "message": "Hi, can you quote 40 office chairs delivered to Varna before the 15th? Need an answer today.",
+      "extracted": "Extracted",
+      "routed": "Routed to sales · Varna",
+      "draft": "Draft reply ready",
+      "chatQ": "Do you deliver outside Sofia?",
+      "chatA": "Yes. We deliver across Bulgaria, and Varna and Burgas have their own offices.",
+      "source": "source: delivery-policy.pdf",
+      "typing": "assistant is typing",
+      "fit": "fitting linear regression",
+      "ledger": "AGility · engagement",
+      "steps": [
+        "Discovery call",
+        "Scope & proposal",
+        "Prototype",
+        "Ship & integrate",
+        "Measure & improve"
+      ]
+    }
+  },
+  "case": {
+    "back": "All work",
+    "index": "Case study",
+    "summary": "Summary",
+    "meta": {
+      "role": "Role",
+      "built": "I built",
+      "timeline": "Timeline",
+      "team": "Team",
+      "stack": "Stack",
+      "links": "Links",
+      "status": "Status"
+    },
+    "sections": {
+      "problem": "The problem",
+      "approach": "Approach",
+      "architecture": "Architecture",
+      "decisions": "Key decisions & trade-offs",
+      "result": "Result",
+      "next": "What I’d do next"
+    },
+    "pending": "The full write-up for this project is being prepared. Until then: the summary, my role and the code.",
+    "pendingPh": "[[CASE STUDY: problem, approach, result]]",
+    "nextProject": "Next project",
+    "live": "Live demo",
+    "code": "Code",
+    "none": "Private / client work"
+  },
+  "studies": {
+    "index": "Studies",
+    "meta": "VSCPI Burgas · Erasmus+ ready",
+    "title": "I learn it at school. I <em>prove</em> it at work.",
+    "lede": "For my school, Erasmus+ selection committees and anyone who wants to see who I am beyond the classroom.",
+    "record": "Academic record",
+    "recordNo": "Student file",
+    "rows": {
+      "school": "School",
+      "specialty": "Specialty",
+      "years": "Years",
+      "klass": "Class",
+      "modules": "Focus",
+      "languages": "Languages",
+      "certificates": "Certificates"
+    },
+    "native": "Native",
+    "pathLabel": "The path so far",
+    "now": "now",
+    "erasmus": {
+      "label": "Erasmus+ & what comes next",
+      "cards": [
+        {
+          "k": "Why Erasmus+",
+          "v": "I want to learn and work in an international environment, use my English every day on real tasks, and bring new ways of working back to my school and to AGility."
+        },
+        {
+          "k": "What I bring",
+          "v": "Responsibility: I run a small company while I’m still at school. Teamwork: three people, one autonomous car, IRO Vienna. And real projects that real businesses use, not just finished assignments."
+        },
+        {
+          "k": "Next",
+          "v": "[[ERASMUS+: the mobility you are applying for, e.g. 2-week placement in Spain, 2027]] · After school: university abroad, studying AI."
+        }
+      ],
+      "docs": "Documents",
+      "cv": "CV (Europass-style)",
+      "refs": "[[REFERENCE: teacher name and subject, contact on request]]"
+    }
+  },
+  "services": {
+    "index": "Services · AGility",
+    "meta": "For businesses",
+    "title": "What AGility <em>builds</em> for businesses.",
+    "lede": "Plain language, no jargon. If one of these sounds like your week, we should talk.",
+    "problem": "The problem",
+    "build": "What I build",
+    "result": "Typical result",
+    "visit": "Visit AGility",
+    "book": "Book a call",
+    "processLabel": "How a project runs",
+    "steps": [
+      {
+        "k": "Diagnose",
+        "v": "One call and a look at how work actually flows today. I find the one bottleneck worth automating first.",
+        "art": [
+          "Map the channels",
+          "Find the bottleneck",
+          "Agree what ‘done’ means"
+        ]
+      },
+      {
+        "k": "Prototype in days",
+        "v": "A working version on your real data, fast, so you can react to something real instead of a document.",
+        "art": []
+      },
+      {
+        "k": "Ship & integrate",
+        "v": "Connected to the tools you already use. Deployed, monitored, documented.",
+        "art": [
+          "build  ✓ compiled",
+          "test   ✓ 0 failed",
+          "deploy ✓ production",
+          "notify ✓ team"
+        ]
+      },
+      {
+        "k": "Measure & improve",
+        "v": "We track the number that matters and keep improving it after launch.",
+        "art": []
+      }
+    ]
+  },
+  "caps": {
+    "index": "Capabilities",
+    "meta": "Toolbox",
+    "title": "The <em>toolbox</em>, running.",
+    "lede": "No skill bars. Each cell is a small working example of what I use.",
+    "cells": {
+      "data": "Python & Data",
+      "llm": "LLM & Automation",
+      "web": "Web",
+      "integrations": "Integrations",
+      "learning": "Currently learning",
+      "tools": "Tools"
+    },
+    "sorted": "sorted by revenue",
+    "tokens": "tokens",
+    "streaming": "streaming",
+    "assembling": "assembling component",
+    "learningList": [
+      "Machine learning fundamentals",
+      "[[OTHER: what you are learning now]]"
+    ],
+    "learningNote": "Being honest about level is part of the job.",
+    "toolsList": [
+      "Claude Code",
+      "Git & GitHub",
+      "Vercel",
+      "VS Code",
+      "Obsidian",
+      "[[OTHER TOOL]]"
+    ],
+    "summary": "Summary: 14 new enquiries today. 3 are urgent and 2 need a site visit. Suggested next step: reply to the urgent three first, then book the visits for Thursday."
+  },
+  "about": {
+    "index": "About",
+    "meta": "The longer version",
+    "title": "I’d rather own an outcome than <em>tick</em> a task.",
+    "toggleLong": "Full story",
+    "toggleShort": "In 30 seconds",
+    "paras": [
+      "I live on my own in Burgas and run my life the way I run AGility: I decide, I own it, and I fix what breaks.",
+      "I’m a high-school student at VSCPI, specialising in AI programming. School gives me the fundamentals: Python, NumPy, Pandas, regression. AGility is where I prove them on real businesses.",
+      "I use AI tools like Claude Code and LLM APIs to ship fast, but I understand and own every system I build. When something breaks, I know where to look.",
+      "What I’m looking for: a remote team working on AI and automation, with real users and people I can learn from. Next for me: Erasmus+, then university abroad. AGility keeps running."
+    ],
+    "bullets": [
+      "High-school student · VSCPI Burgas · AI programming",
+      "Founder of AGility, an AI automation agency",
+      "Python, Pandas, LLM APIs, Next.js. Ships real systems",
+      "IRO Vienna (team of 3) · John Atanasov National IT Tournament (Dec 2026)",
+      "Open to remote AI / automation / Python roles, and to Erasmus+"
+    ]
+  },
+  "contact": {
+    "index": "Contact",
+    "meta": "Reply within 24h",
+    "title": "Have a role, a project or a <em>problem</em> worth automating?",
+    "lede": "Three ways in. Pick the one that fits.",
+    "companies": {
+      "k": "For companies",
+      "v": "Hiring for AI, automation or Python? Here’s everything you need."
+    },
+    "business": {
+      "k": "For businesses",
+      "v": "Tell me what’s slowing you down. I reply within 24 hours."
+    },
+    "schools": {
+      "k": "For schools & Erasmus+",
+      "v": "Teachers, coordinators and committees: my CV and contact details."
+    },
+    "email": "Email",
+    "copy": "Copy email",
+    "copied": "Copied ✓",
+    "linkedin": "LinkedIn",
+    "cv": "Download CV",
+    "europass": "CV (Europass-style)",
+    "book": "Book a call",
+    "form": {
+      "name": "Your name",
+      "company": "Company",
+      "email": "Your email",
+      "message": "What’s slowing you down?",
+      "send": "Send",
+      "sending": "Sending…",
+      "ok": "Sent. I’ll reply within 24 hours.",
+      "error": "Something went wrong. Email me directly instead.",
+      "rate": "Too many messages. Try again in a few minutes.",
+      "invalid": "Please check the highlighted fields.",
+      "notConfigured": "The form isn’t connected yet. Please email me directly."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "status": "status: operational",
+    "top": "Back to top",
+    "palette": "Command palette",
+    "build": "build"
+  },
+  "palette": {
+    "placeholder": "Type a command or search…",
+    "empty": "Nothing found.",
+    "sections": "Jump to",
+    "projects": "Projects",
+    "actions": "Actions",
+    "copyEmail": "Copy email",
+    "downloadCv": "Download CV",
+    "europass": "Open CV (Europass-style)",
+    "language": "Switch to Bulgarian",
+    "github": "Open GitHub",
+    "linkedin": "Open LinkedIn",
+    "book": "Book a call",
+    "hint": "to navigate",
+    "select": "to select",
+    "close": "to close"
+  },
+  "cursor": {
+    "view": "view",
+    "open": "open",
+    "copy": "copy"
+  },
+  "cv": {
+    "title": "CV",
+    "europassTitle": "CV — Europass-style",
+    "print": "Print / Save as PDF",
+    "download": "Download PDF",
+    "back": "Back to site",
+    "role": "AI & Automation Developer · Founder, AGility",
+    "profileK": "Profile",
+    "profile": "High-school student at VSCPI Burgas, specialising in AI programming, and founder of AGility, an AI automation agency. I build AI systems that real businesses use: enquiry automation, chatbots and data tools, in Python and Next.js.",
+    "experienceK": "Experience",
+    "educationK": "Education",
+    "projectsK": "Selected projects",
+    "competitionsK": "Competitions",
+    "skillsK": "Skills",
+    "languagesK": "Languages",
+    "digitalK": "Digital skills",
+    "personalK": "Personal information",
+    "workK": "Work experience",
+    "eduTrainK": "Education and training",
+    "honoursK": "Honours and awards",
+    "additionalK": "Additional information",
+    "agilityRole": "Founder & developer · AGility",
+    "agilityWhen": "[[START YEAR]] — present",
+    "agilityWhere": "Burgas, Bulgaria · remote",
+    "agilityPoints": [
+      "Founded and run an AI automation agency for businesses.",
+      "Build enquiry and lead automation, AI chatbots, internal tools and AI data analysis.",
+      "Own the whole engagement: scoping, proposal, build, delivery and support."
+    ],
+    "iro": "IRO competition, Vienna · team of 3 · electronics, camera, battery & power · Result: [[RESULT]]",
+    "atanasov": "National IT Tournament “John Atanasov”, Sofia, Dec 2026 · Scamly · Distributed Applications · Result: [[RESULT]]",
+    "cefrHead": [
+      "Listening",
+      "Reading",
+      "Spoken interaction",
+      "Spoken production",
+      "Writing"
+    ],
+    "additional": "Next steps: Erasmus+ mobility [[PROGRAMME]], then university abroad (AI). References from teachers available on request."
+  },
+  "notFound": {
+    "title": "This route isn’t in the system.",
+    "body": "The page you were looking for doesn’t exist, or it moved.",
+    "home": "Back to the start"
+  }
+}
