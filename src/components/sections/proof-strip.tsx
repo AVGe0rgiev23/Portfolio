@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { stack } from "@/content/stack";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
+import { SHOW_PLACEHOLDERS, filled } from "@/content/types";
 
 type Fact = { n: string; caption: string };
 
@@ -19,7 +20,7 @@ function Row({ hidden = false }: { hidden?: boolean }) {
 
 export async function ProofStrip() {
   const t = await getTranslations("proof");
-  const facts = t.raw("facts") as Fact[];
+  const facts = (t.raw("facts") as Fact[]).filter((f) => SHOW_PLACEHOLDERS || filled(f.n));
 
   return (
     <section data-island="proof" aria-label={t("label")} className="relative pb-8 pt-16 md:pb-12 md:pt-24">
@@ -32,11 +33,12 @@ export async function ProofStrip() {
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-bg to-transparent" aria-hidden />
       </div>
 
+      {facts.length > 1 && (
       <dl className="frame grid-12 mt-14 gap-y-10 md:mt-20">
         {facts.map((f, i) => (
           <div
             key={f.caption}
-            className="col-span-2 flex flex-col gap-3 border-l border-line pl-4 md:col-span-3 md:pl-6"
+            className="col-span-2 flex flex-col gap-3 border-l border-line pl-4 md:col-span-4 md:pl-6"
             data-reveal="fade"
             style={{ ["--d" as string]: i }}
           >
@@ -47,6 +49,7 @@ export async function ProofStrip() {
           </div>
         ))}
       </dl>
+      )}
     </section>
   );
 }

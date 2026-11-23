@@ -4,10 +4,11 @@ import { services } from "@/content/services";
 import { site, isSet } from "@/content/site";
 import { SectionHead } from "@/components/ui/section-head";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
+import { SHOW_PLACEHOLDERS, filled } from "@/content/types";
 import { Spotlight } from "@/components/ui/spotlight";
 import { ProcessRail } from "./process-rail";
 
-/** 05 — Services (AGility), with the process as a short horizontal run. */
+/** 04 — Services (AGility), with the process as a short horizontal run. */
 export async function Services() {
   const t = await getTranslations("services");
   const raw = await getLocale();
@@ -19,7 +20,7 @@ export async function Services() {
       <div className="frame">
         <SectionHead
           id="services-title"
-          n="05"
+          n="04"
           label={t("index")}
           meta={t("meta")}
           title={t.rich("title", { em: (c) => <em className="em">{c}</em> })}
@@ -45,10 +46,14 @@ export async function Services() {
               <dl className="mt-auto grid gap-4 border-t border-line pt-6 text-[15px] leading-relaxed sm:grid-cols-[8rem_1fr]">
                 <dt className="t-mono pt-[3px] text-faint">{t("build")}</dt>
                 <dd className="text-text/85">{s.build[locale]}</dd>
-                <dt className="t-mono pt-[3px] text-faint">{t("result")}</dt>
-                <dd>
-                  <PlaceholderText>{s.result[locale]}</PlaceholderText>
-                </dd>
+                {(SHOW_PLACEHOLDERS || filled(s.result[locale])) && (
+                  <>
+                    <dt className="t-mono pt-[3px] text-faint">{t("result")}</dt>
+                    <dd>
+                      <PlaceholderText>{s.result[locale]}</PlaceholderText>
+                    </dd>
+                  </>
+                )}
               </dl>
             </article>
           ))}

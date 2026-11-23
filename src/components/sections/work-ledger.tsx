@@ -1,8 +1,8 @@
 import { ViewTransition } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { projects, type Project, type ProjectStatus } from "@/content/projects";
-import { isPlaceholder } from "@/content/types";
+import { visibleProjects as projects, type Project, type ProjectStatus } from "@/content/projects";
+import { SHOW_PLACEHOLDERS, filled, isPlaceholder } from "@/content/types";
 import { isLocale } from "@/i18n/routing";
 import { site } from "@/content/site";
 import { SectionHead } from "@/components/ui/section-head";
@@ -33,7 +33,7 @@ export function StatusChip({ status, label, className }: { status: ProjectStatus
 export function Chips({ items }: { items: string[] }) {
   return (
     <ul className="flex flex-wrap gap-1.5">
-      {items.map((s) => (
+      {items.filter(filled).map((s) => (
         <li key={s} className="t-mono rounded-[2px] border border-line px-1.5 py-0.5 text-[10px] text-muted">
           <PlaceholderText>{s}</PlaceholderText>
         </li>
@@ -79,8 +79,14 @@ export function Cover({
         {index}
       </span>
       <div className="t-mono absolute left-4 top-4 flex flex-col gap-2 text-[10px] text-faint">
-        <span>{pending}</span>
-        <span className="ph">{`[[MEDIA: /public/work/${p.slug}.mp4 + .webm + poster]]`}</span>
+        {SHOW_PLACEHOLDERS ? (
+          <>
+            <span>{pending}</span>
+            <PlaceholderText>{`[[MEDIA: /public/work/${p.slug}.mp4 + .webm + poster]]`}</PlaceholderText>
+          </>
+        ) : (
+          <span>{p.name.en}</span>
+        )}
       </div>
     </div>
   );
@@ -102,7 +108,7 @@ export async function WorkLedger() {
       <div className="frame">
         <SectionHead
           id="work-title"
-          n="03"
+          n="02"
           label={t("index")}
           meta={t("meta")}
           title={t.rich("title", { em: (c) => <em className="em">{c}</em> })}
@@ -147,7 +153,6 @@ export async function WorkLedger() {
                         href={`/work/${p.slug}`}
                         prefetch
                         className="dossier__link block w-fit transition-transform duration-700 ease-[var(--ease-out)] after:absolute after:inset-0 after:content-[''] group-hover:translate-x-2"
-                        data-cursor={t("open")}
                       >
                         <ViewTransition name={`title-${p.slug}`} share="morph" default="none">
                           <span className="inline-block">{name}</span>
@@ -191,10 +196,14 @@ export async function WorkLedger() {
                           <dl className="grid grid-cols-[6.5rem_1fr] gap-x-4 gap-y-2.5 border-t border-line pt-5 text-[14.5px] leading-snug">
                             <dt className="t-mono pt-[3px] text-faint">{t("role")}</dt>
                             <dd className="text-text/90">{p.role[locale]}</dd>
-                            <dt className="t-mono pt-[3px] text-faint">{t("built")}</dt>
-                            <dd className="text-text/90">
-                              <PlaceholderText>{p.built[locale]}</PlaceholderText>
-                            </dd>
+                            {(SHOW_PLACEHOLDERS || filled(p.built[locale])) && (
+                              <>
+                                <dt className="t-mono pt-[3px] text-faint">{t("built")}</dt>
+                                <dd className="text-text/90">
+                                  <PlaceholderText>{p.built[locale]}</PlaceholderText>
+                                </dd>
+                              </>
+                            )}
                             <dt className="t-mono pt-[3px] text-faint">{t("team")}</dt>
                             <dd className="text-text/90">
                               <PlaceholderText>{p.team[locale]}</PlaceholderText>
@@ -211,7 +220,7 @@ export async function WorkLedger() {
                               <a href={live} target="_blank" rel="noreferrer" className="text-muted hover:text-text">
                                 {t("live")} ↗
                               </a>
-                            ) : p.links.live ? (
+                            ) : p.links.live && SHOW_PLACEHOLDERS ? (
                               <span className="text-faint">
                                 {t("live")} <PlaceholderText>{p.links.live}</PlaceholderText>
                               </span>
@@ -220,7 +229,7 @@ export async function WorkLedger() {
                               <a href={code} target="_blank" rel="noreferrer" className="text-muted hover:text-text">
                                 {t("code")} ↗
                               </a>
-                            ) : p.links.code ? (
+                            ) : p.links.code && SHOW_PLACEHOLDERS ? (
                               <span className="text-faint">
                                 {t("code")} <PlaceholderText>{p.links.code}</PlaceholderText>
                               </span>

@@ -62,7 +62,7 @@ export function PortraitFrame({ children, fig, className }: { children: ReactNod
 
   return (
     <figure className={cn("portrait group", className)}>
-      <div ref={ref} className="portrait__frame relative aspect-[4/5] w-full" data-cursor="Alex">
+      <div ref={ref} className="portrait__frame relative aspect-[4/5] w-full">
         <div className="portrait__card absolute inset-0 overflow-hidden rounded-[2px] border border-line-strong bg-sunken">
           {children}
           <div className="portrait__grain" aria-hidden />

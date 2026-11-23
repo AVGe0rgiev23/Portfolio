@@ -16,7 +16,6 @@ import { Nav } from "@/components/layout/nav";
 import { RevealObserver } from "@/components/motion/reveal-observer";
 import { Footer } from "@/components/layout/footer";
 import { PaletteLoader } from "@/components/layout/palette-loader";
-import { Cursor } from "@/components/layout/cursor";
 import { Toaster } from "@/components/ui/toaster";
 
 export function generateStaticParams() {
@@ -128,7 +127,6 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
           </SmoothScroll>
           <RevealObserver />
           <Toaster />
-          <Cursor />
           <div className="grain" aria-hidden />
         </NextIntlClientProvider>
       </body>

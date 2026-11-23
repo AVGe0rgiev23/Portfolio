@@ -18,13 +18,12 @@
     "switchTo": "Switch to Bulgarian",
     "palette": "Open command palette",
     "cv": "Download CV",
-    "studies": "Studies"
+    "studies": "Education"
   },
   "island": {
     "available": "Available for work",
     "hero": "Available for work",
     "proof": "Stack & facts",
-    "ledgers": "Developer × Founder",
     "work": "Selected work",
     "services": "Services",
     "process": "Process",
@@ -33,8 +32,7 @@
     "about": "About",
     "contact": "Reply within 24h",
     "what": "What I do",
-    "studies": "Studies",
-    "caps": "Capabilities"
+    "studies": "Education"
   },
   "preloader": {
     "boot": "initialising agility.os",
@@ -82,63 +80,8 @@
       {
         "n": "2",
         "caption": "Competitions: IRO Vienna & John Atanasov"
-      },
-      {
-        "n": "1",
-        "caption": "Company founded: AGility"
-      },
-      {
-        "n": "24h",
-        "caption": "Reply time, every message"
       }
     ]
-  },
-  "ledgers": {
-    "index": "Developer × Founder",
-    "meta": "Two roles",
-    "title": "One person. <em>Two</em> ledgers.",
-    "devLabel": "Ledger 01 — The developer",
-    "founderLabel": "Ledger 02 — The founder",
-    "file": "enquiry/extract.py",
-    "running": "typing",
-    "done": "ready",
-    "devPoints": [
-      "Python and data fundamentals: Pandas, NumPy, regression. Not just API calls.",
-      "LLM systems that return structured, validated output you can build on.",
-      "Full stack to production: Next.js, TypeScript, Vercel."
-    ],
-    "invoice": "AGility · Engagement ledger",
-    "invoiceNo": "No. 0001",
-    "rows": [
-      {
-        "k": "Services",
-        "v": "Enquiry automation · AI chatbots · Internal tools · Data analysis"
-      },
-      {
-        "k": "Engagement",
-        "v": "[[ENGAGEMENT MODEL: e.g. fixed-scope build, then monthly care]]"
-      },
-      {
-        "k": "Process",
-        "v": "Diagnose → Prototype → Ship → Measure"
-      },
-      {
-        "k": "Response time",
-        "v": "Within 24 hours"
-      },
-      {
-        "k": "Point of contact",
-        "v": "Alex Georgiev, start to finish"
-      }
-    ],
-    "total": "Owner",
-    "totalValue": "One person, accountable",
-    "founderPoints": [
-      "Scoping: turning “we’re drowning in messages” into a build with a clear finish line.",
-      "Client communication in plain language. Demos, not status reports.",
-      "Owning delivery, from the first call to well after launch."
-    ],
-    "close": "Most developers can build it. Most founders can sell it. <em>I do both.</em>"
   },
   "work": {
     "index": "Selected work",
@@ -247,10 +190,10 @@
     "none": "Private / client work"
   },
   "studies": {
-    "index": "Studies",
-    "meta": "VSCPI Burgas · Erasmus+ ready",
+    "index": "Education",
+    "meta": "VSCPI Burgas",
     "title": "I learn it at school. I <em>prove</em> it at work.",
-    "lede": "For my school, Erasmus+ selection committees and anyone who wants to see who I am beyond the classroom.",
+    "lede": "What I study, the languages I work in, and the path so far.",
     "record": "Academic record",
     "recordNo": "Student file",
     "rows": {
@@ -265,24 +208,10 @@
     "native": "Native",
     "pathLabel": "The path so far",
     "now": "now",
-    "erasmus": {
-      "label": "Erasmus+ & what comes next",
-      "cards": [
-        {
-          "k": "Why Erasmus+",
-          "v": "I want to learn and work in an international environment, use my English every day on real tasks, and bring new ways of working back to my school and to AGility."
-        },
-        {
-          "k": "What I bring",
-          "v": "Responsibility: I run a small company while I’m still at school. Teamwork: three people, one autonomous car, IRO Vienna. And real projects that real businesses use, not just finished assignments."
-        },
-        {
-          "k": "Next",
-          "v": "[[ERASMUS+: the mobility you are applying for, e.g. 2-week placement in Spain, 2027]] · After school: university abroad, studying AI."
-        }
-      ],
-      "docs": "Documents",
-      "cv": "CV (Europass-style)",
+    "docs": {
+      "label": "Documents",
+      "cv": "CV (PDF)",
+      "europass": "CV (Europass format)",
       "refs": "[[REFERENCE: teacher name and subject, contact on request]]"
     }
   },
@@ -329,38 +258,6 @@
       }
     ]
   },
-  "caps": {
-    "index": "Capabilities",
-    "meta": "Toolbox",
-    "title": "The <em>toolbox</em>, running.",
-    "lede": "No skill bars. Each cell is a small working example of what I use.",
-    "cells": {
-      "data": "Python & Data",
-      "llm": "LLM & Automation",
-      "web": "Web",
-      "integrations": "Integrations",
-      "learning": "Currently learning",
-      "tools": "Tools"
-    },
-    "sorted": "sorted by revenue",
-    "tokens": "tokens",
-    "streaming": "streaming",
-    "assembling": "assembling component",
-    "learningList": [
-      "Machine learning fundamentals",
-      "[[OTHER: what you are learning now]]"
-    ],
-    "learningNote": "Being honest about level is part of the job.",
-    "toolsList": [
-      "Claude Code",
-      "Git & GitHub",
-      "Vercel",
-      "VS Code",
-      "Obsidian",
-      "[[OTHER TOOL]]"
-    ],
-    "summary": "Summary: 14 new enquiries today. 3 are urgent and 2 need a site visit. Suggested next step: reply to the urgent three first, then book the visits for Thursday."
-  },
   "about": {
     "index": "About",
     "meta": "The longer version",
@@ -371,39 +268,51 @@
       "I live on my own in Burgas and run my life the way I run AGility: I decide, I own it, and I fix what breaks.",
       "I’m a high-school student at VSCPI, specialising in AI programming. School gives me the fundamentals: Python, NumPy, Pandas, regression. AGility is where I prove them on real businesses.",
       "I use AI tools like Claude Code and LLM APIs to ship fast, but I understand and own every system I build. When something breaks, I know where to look.",
-      "What I’m looking for: a remote team working on AI and automation, with real users and people I can learn from. Next for me: Erasmus+, then university abroad. AGility keeps running."
+      "What I’m looking for: a remote team working on AI and automation, with real users and people I can learn from. AGility keeps running alongside school."
     ],
     "bullets": [
       "High-school student · VSCPI Burgas · AI programming",
       "Founder of AGility, an AI automation agency",
       "Python, Pandas, LLM APIs, Next.js. Ships real systems",
       "IRO Vienna (team of 3) · John Atanasov National IT Tournament (Dec 2026)",
-      "Open to remote AI / automation / Python roles, and to Erasmus+"
+      "Open to remote AI / automation / Python roles"
+    ],
+    "both": "Most developers can build it. Most founders can sell it. <em>I do both.</em>",
+    "learningK": "Currently learning",
+    "learningList": [
+      "Machine learning fundamentals",
+      "[[OTHER: what you are learning now]]"
+    ],
+    "learningNote": "Being honest about level is part of the job.",
+    "toolsK": "Tools",
+    "toolsList": [
+      "Claude Code",
+      "Git & GitHub",
+      "Vercel",
+      "VS Code",
+      "Obsidian",
+      "[[OTHER TOOL]]"
     ]
   },
   "contact": {
     "index": "Contact",
     "meta": "Reply within 24h",
     "title": "Have a role, a project or a <em>problem</em> worth automating?",
-    "lede": "Three ways in. Pick the one that fits.",
+    "lede": "Two ways in. Pick the one that fits.",
     "companies": {
-      "k": "For companies",
-      "v": "Hiring for AI, automation or Python? Here’s everything you need."
+      "k": "Hire me",
+      "v": "Hiring for AI, automation or Python, or need my CV for a school or programme? Everything is here."
     },
     "business": {
-      "k": "For businesses",
-      "v": "Tell me what’s slowing you down. I reply within 24 hours."
-    },
-    "schools": {
-      "k": "For schools & Erasmus+",
-      "v": "Teachers, coordinators and committees: my CV and contact details."
+      "k": "Work with AGility",
+      "v": "Tell me what’s slowing your business down."
     },
     "email": "Email",
     "copy": "Copy email",
     "copied": "Copied ✓",
     "linkedin": "LinkedIn",
     "cv": "Download CV",
-    "europass": "CV (Europass-style)",
+    "europass": "CV (Europass format)",
     "book": "Book a call",
     "form": {
       "name": "Your name",
@@ -434,7 +343,7 @@
     "actions": "Actions",
     "copyEmail": "Copy email",
     "downloadCv": "Download CV",
-    "europass": "Open CV (Europass-style)",
+    "europass": "Open CV (Europass format)",
     "language": "Switch to Bulgarian",
     "github": "Open GitHub",
     "linkedin": "Open LinkedIn",
@@ -443,14 +352,9 @@
     "select": "to select",
     "close": "to close"
   },
-  "cursor": {
-    "view": "view",
-    "open": "open",
-    "copy": "copy"
-  },
   "cv": {
     "title": "CV",
-    "europassTitle": "CV — Europass-style",
+    "europassTitle": "CV — Europass format",
     "print": "Print / Save as PDF",
     "download": "Download PDF",
     "back": "Back to site",
@@ -486,7 +390,7 @@
       "Spoken production",
       "Writing"
     ],
-    "additional": "Next steps: Erasmus+ mobility [[PROGRAMME]], then university abroad (AI). References from teachers available on request."
+    "additional": "References from teachers available on request."
   },
   "notFound": {
     "title": "This route isn’t in the system.",

@@ -1,7 +1,7 @@
 import type { L } from "./types";
 
 /**
- * Studies: for school, Erasmus+ committees and universities abroad.
+ * Education: school, languages and certificates.
  * No grades on purpose. Fill every [[PLACEHOLDER]] with true values (class, CEFR levels, certificates).
  */
 

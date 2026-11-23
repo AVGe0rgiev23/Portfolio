@@ -1,4 +1,4 @@
-import type { L } from "./types";
+import { SHOW_PLACEHOLDERS, filled, type L } from "./types";
 
 /**
  * Selected work. Order here = order on the site.
@@ -188,4 +188,10 @@ export const projects: Project[] = [
   // [[MORE DEMOS — copy an entry above and fill the same fields]]
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+/**
+ * Projects shown on the live site. A project whose summary is still only a placeholder
+ * is hidden in production (rows, palette, sitemap, case pages) until you fill it in.
+ */
+export const visibleProjects = projects.filter((p) => SHOW_PLACEHOLDERS || filled(p.summary.en));
+
+export const getProject = (slug: string) => visibleProjects.find((p) => p.slug === slug);

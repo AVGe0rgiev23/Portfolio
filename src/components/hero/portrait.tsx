@@ -3,6 +3,7 @@ import path from "node:path";
 import Image from "next/image";
 import { PortraitFrame } from "./portrait-frame";
 import { site } from "@/content/site";
+import { PlaceholderText } from "@/components/ui/placeholder-text";
 
 export const hasPortrait = () => existsSync(path.join(process.cwd(), "public", site.portrait.replace(/^\//, "")));
 
@@ -41,7 +42,7 @@ export function Portrait({
             aria-hidden
           />
           <span className="t-mono relative text-[10px] text-faint">
-            <span className="ph">[[PORTRAIT: /public/alex.jpg]]</span>
+            <PlaceholderText>[[PORTRAIT: /public/alex.jpg]]</PlaceholderText>
           </span>
           <span
             className="relative self-end font-serif text-[clamp(4.5rem,9vw,8.5rem)] italic leading-[0.8] tracking-[-0.05em] text-text/[0.12]"

@@ -25,7 +25,6 @@ export function CopyEmail({ copied, label, className }: { copied: string; label:
     <button
       type="button"
       onClick={() => copyEmail(copied)}
-      data-cursor="copy"
       aria-label={`${label}: ${site.email}`}
       className={cn("group inline-flex items-center gap-3 text-left", className)}
     >

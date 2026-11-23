@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
-import { projects } from "@/content/projects";
+import { visibleProjects as projects } from "@/content/projects";
 
 const paths = ["", "/cv", "/cv/europass", ...projects.map((p) => `/work/${p.slug}`)];
 

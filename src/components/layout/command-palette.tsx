@@ -5,13 +5,13 @@ import { Command } from "cmdk";
 import { AnimatePresence, motion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { projects } from "@/content/projects";
+import { visibleProjects as projects } from "@/content/projects";
 import { site, isSet } from "@/content/site";
 import { isLocale } from "@/i18n/routing";
 import { scrollToId, useLenis } from "@/components/motion/smooth-scroll";
 import { copyEmail } from "@/components/ui/copy-email";
 
-const SECTIONS = ["what", "work", "studies", "services", "capabilities", "about", "contact"] as const;
+const SECTIONS = ["what", "work", "studies", "services", "about", "contact"] as const;
 
 /** ⌘K / Ctrl+K anywhere. Also opened by the nav and footer buttons (event "ag:palette"). */
 export function CommandPalette({ initialOpen = false }: { initialOpen?: boolean }) {
@@ -62,8 +62,7 @@ export function CommandPalette({ initialOpen = false }: { initialOpen?: boolean 
       router.push(`/#${id}`);
     });
 
-  const label = (id: (typeof SECTIONS)[number]) =>
-    id === "what" ? tn("what") : id === "capabilities" ? tn("caps") : tnav(id);
+  const label = (id: (typeof SECTIONS)[number]) => (id === "what" ? tn("what") : tnav(id));
 
   return (
     <AnimatePresence>
@@ -136,7 +135,7 @@ export function CommandPalette({ initialOpen = false }: { initialOpen?: boolean 
                     <span className="t-mono w-7 text-faint">↓</span>
                     {t("downloadCv")}
                   </Command.Item>
-                  <Command.Item value="europass cv erasmus school" onSelect={() => run(() => router.push("/cv/europass"))}>
+                  <Command.Item value="europass cv school" onSelect={() => run(() => router.push("/cv/europass"))}>
                     <span className="t-mono w-7 text-faint">→</span>
                     {t("europass")}
                   </Command.Item>

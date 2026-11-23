@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
-const DURATION = 1050; // counter; + 450ms fade = ≤1.5s total
+const DURATION = 650; // counter; + 450ms fade ≈ 1.1s total
 const FADE = 450;
 
 /**

@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import type { AppLocale } from "@/i18n/routing";
 import { site, isSet } from "@/content/site";
-import { projects } from "@/content/projects";
+import { visibleProjects as projects } from "@/content/projects";
 import { school, languages } from "@/content/education";
 import { stack } from "@/content/stack";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
@@ -13,7 +13,7 @@ const H = ({ children }: { children: React.ReactNode }) => (
 /**
  * One data source, two shapes:
  * - "standard": a recruiter CV.
- * - "europass": Europass section order + CEFR self-assessment grid (Erasmus+, schools).
+ * - "europass": Europass section order + CEFR self-assessment grid.
  * Screen: dark sheet. Print: light, A4, one page (see @media print in globals.css).
  */
 export async function CvSheet({ locale, variant }: { locale: AppLocale; variant: "standard" | "europass" }) {

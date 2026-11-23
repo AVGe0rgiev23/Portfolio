@@ -1,5 +1,5 @@
 import { ogCard, OG_SIZE } from "@/lib/og";
-import { getProject, projects } from "@/content/projects";
+import { getProject, visibleProjects as projects } from "@/content/projects";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";

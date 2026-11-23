@@ -164,7 +164,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       nodes: [
         n("call", "Incoming call", "Входящо обаждане", 80, 220, "input"),
         n("app", "Scamly on the phone", "Scamly на телефона", 320, 220, "core"),
-        n("check", "[[DETECTION]]", "[[ОТКРИВАНЕ]]", 560, 220, "core"),
+        n("check", "Scam check", "Проверка за измама", 560, 220, "core"), // [[DETECTION: name the real method]]
         n("warn", "Warning on screen", "Предупреждение на екрана", 820, 120, "output"),
         n("family", "Family alert", "Сигнал към семейството", 820, 320, "output"),
       ],

@@ -60,9 +60,6 @@ export async function Hero() {
                 <span className="sm:hidden">{t("openToShort")}</span>
                 <span className="hidden sm:inline">{t("openTo")}</span>
               </p>
-              <p className="t-mono hidden text-muted xl:block">
-                <span className="text-faint">[</span> 00 — {t("index")} <span className="text-faint">]</span>
-              </p>
             </div>
 
             <h1 id="hero-title" className="font-serif">
@@ -127,8 +124,6 @@ export async function Hero() {
             <li>
               {t("time")} <LocalTime className="tabular-nums text-text" />
             </li>
-            <li className="hidden sm:list-item">{t("open")}</li>
-            <li className="hidden md:list-item">{t("founder")}</li>
           </ul>
           <a href="#what" aria-label={t("scroll")} className="group flex shrink-0 items-center gap-3 text-faint transition-colors hover:text-text">
             <span className="hidden sm:inline">{t("scroll")}</span>

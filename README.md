@@ -5,7 +5,7 @@ It is built for three readers at once:
 
 1. **Companies hiring** for AI, automation or Python. They get the work, the stack, a CV in one click and contact details.
 2. **Businesses** that could become AGility clients. They get services in plain language, the process, a booking link and a contact form.
-3. **Schools, Erasmus+ committees and universities.** They get studies, languages, competitions, motivation and a Europass-style CV.
+3. **Schools and programmes.** They get education, languages, certificates, competitions and a Europass-format CV. No section is labelled for any one audience.
 
 Bilingual: `/en` and `/bg`.
 
@@ -38,7 +38,7 @@ npm run lint
 | All other copy, EN + BG | `messages/en.json`, `messages/bg.json` |
 | Design tokens (colours, type, motion) | `src/app/globals.css` |
 
-**Placeholders.** Anything written as `[[LIKE THIS]]` is unfilled. It shows on the page as a dashed ember marker so nothing unfinished ships unnoticed.
+**Placeholders.** Anything written as `[[LIKE THIS]]` is unfilled. In local dev it shows as a dashed ember marker. In production it's hidden, along with any label it would leave dangling. A project whose summary is still a placeholder is hidden entirely, including its row, palette entry, sitemap entry and case page. Set `NEXT_PUBLIC_SHOW_PLACEHOLDERS=1` to see them in a production build.
 To list every remaining one:
 
 ```bash
@@ -74,21 +74,18 @@ The railings client stays anonymised as "Unified Enquiry Engine", with no brand,
 ### Services — `src/content/services.ts`
 - [ ] `[[METRIC]]` for each service. Leave it as a placeholder until you have a true number from a real client.
 
-### Studies, Erasmus+ — `src/content/education.ts` and `messages/*.json → studies`
+### Education — `src/content/education.ts` and `messages/*.json → studies`
 - [ ] `[[YEARS]]` (e.g. 2023 — 2027) and `[[CLASS]]` (e.g. 11th grade). **No grades, on purpose.**
 - [ ] `[[CEFR]]`: your English level (A1–C2) and, if any, `[[CERTIFICATE]]` (e.g. Cambridge B2, 2026).
 - [ ] `[[OTHER LANGUAGE]]`, or delete that row.
 - [ ] `[[CERTIFICATES]]`: name, issuer, year. Delete if none.
 - [ ] `[[OTHER SUBJECTS]]` in your focus modules.
-- [ ] `studies.erasmus.cards[2]`: `[[ERASMUS+: the mobility you're applying for]]`.
-- [ ] `studies.erasmus.refs`: `[[REFERENCE: teacher name and subject]]` (optional but strong for Erasmus+).
-- [ ] **Read the "Why Erasmus+" and "What I bring" texts and make them yours.** Committees read for your own voice.
+- [ ] `studies.docs.refs`: `[[REFERENCE: teacher name and subject]]` (optional).
 
 ### Elsewhere in `messages/*.json`
 - [ ] `proof.facts[0]`: `[[N]]` shipped demos (count only what's live or on GitHub).
-- [ ] `ledgers.rows[1]`: `[[ENGAGEMENT MODEL]]` (how you charge or engage).
-- [ ] `caps.learningList`, `caps.toolsList`: `[[OTHER]]`.
-- [ ] `cv.agilityWhen`: `[[START YEAR]]`, and `cv.additional`: `[[PROGRAMME]]`.
+- [ ] `about.learningList`, `about.toolsList`: `[[OTHER]]`.
+- [ ] `cv.agilityWhen`: `[[START YEAR]]`.
 - [ ] `milestones.ts`: `[[YEAR]]` for VSCPI, AGility and IRO.
 
 ### Regenerate the CV PDF after filling things in
@@ -97,7 +94,7 @@ The railings client stays anonymised as "Unified Enquiry Engine", with no brand,
 2. Open `http://localhost:3000/en/cv` and click **Print / Save as PDF**.
 3. Choose A4, margins **Default**, **Background graphics** on, then save over `public/cv.pdf`.
 
-The `/cv/europass` page prints the same way. Erasmus+ applications usually want the Europass format.
+The `/cv/europass` page prints the same way.
 
 ---
 
@@ -149,7 +146,7 @@ vercel --prod
 - **next-intl** with `/en` + `/bg`, using `next/root-params`. Browser language is detected on the first visit only, then the choice is remembered.
 - **Signal Field:** a custom raw-WebGL particle shader (no three.js). All motion runs in one vertex shader. It lazy-loads after first paint, pauses off-screen, caps DPR at 1.5, and falls back to a server-rendered SVG poster for reduced motion and low-power devices.
 - **GSAP + ScrollTrigger** for the ledger choreography, process rail and timeline. **Lenis** smooth scroll on desktop only. **Motion** for UI micro-interactions. React **`<ViewTransition>`** morphs a dossier row into its case-study hero.
-- **⌘K command palette** (cmdk, lazy-loaded on first use), status island, data-trail cursor, custom cursor (desktop only).
+- **⌘K command palette** (cmdk, lazy-loaded on first use), status island, data trail over Selected work, and a lightly styled system cursor (pure CSS, falls back to the normal cursor).
 - **SEO:** localized metadata, hreflang, sitemap, robots, JSON-LD `Person` + `Organization`, dynamic OG images per page and language (`next/og`).
 - **Accessibility:** keyboard navigable, visible ember focus rings, AA contrast, `prefers-reduced-motion` respected everywhere.
 

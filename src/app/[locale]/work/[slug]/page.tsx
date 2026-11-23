@@ -5,7 +5,7 @@ import { locale as rootLocale } from "next/root-params";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { isLocale, type AppLocale } from "@/i18n/routing";
-import { projects, getProject } from "@/content/projects";
+import { visibleProjects as projects, getProject } from "@/content/projects";
 import { getCaseStudy } from "@/content/case-studies";
 import { isPlaceholder } from "@/content/types";
 import { SectionIndex } from "@/components/ui/section-index";
