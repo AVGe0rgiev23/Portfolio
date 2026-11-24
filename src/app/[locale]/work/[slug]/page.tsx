@@ -96,7 +96,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
   const hasVideo = Boolean(p.media?.mp4 || p.media?.webm);
 
   const keep = (s?: string) => SHOW_PLACEHOLDERS || filled(s);
-  const hasDemo = !hasVideo && DEMOS[slug];
+  const hasDemo = !hasVideo && !p.media?.poster && DEMOS[slug];
   // Rows whose value is still an unfilled placeholder are left out on the live site.
   const meta: [string, React.ReactNode][] = [
     [t("meta.role"), p.role[locale]],
@@ -151,7 +151,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
         </header>
 
         {/* Media: a real recording if there is one, else a live illustration, else nothing on the live site. */}
-        {(hasVideo || hasDemo || SHOW_PLACEHOLDERS) && (
+        {(hasVideo || hasDemo || p.media?.poster || SHOW_PLACEHOLDERS) && (
           <ViewTransition name={`media-${slug}`} share="morph" default="none">
             <div className="mt-12 md:mt-16">
               {hasVideo && p.media ? (
@@ -170,7 +170,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
                   </div>
                 </figure>
               ) : (
-                <Cover p={p} index={index} pending={tw("mediaMissing")} always className="aspect-[16/10] md:aspect-[16/8]" />
+                <Cover p={p} index={index} pending={tw("mediaMissing")} locale={locale} always priority className="aspect-[16/10] md:aspect-[16/8]" />
               )}
             </div>
           </ViewTransition>
@@ -264,7 +264,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
               </span>
             </span>
             <span className="next-project__preview pointer-events-none absolute right-[var(--page-pad)] top-1/2 hidden w-[26vw] max-w-[380px] -translate-y-1/2 md:block">
-              <Cover p={next} index={nextIndex} pending={tw("mediaMissing")} />
+              <Cover p={next} index={nextIndex} pending={tw("mediaMissing")} locale={locale} />
             </span>
           </div>
         </Link>

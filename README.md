@@ -56,8 +56,6 @@ Honesty rules from the brief still apply. Never invent metrics, clients, results
 The railings client stays anonymised as "Unified Enquiry Engine", with no brand, logo or domain anywhere.
 
 ### Identity and contact — `src/content/site.ts`
-- [ ] `[[CAL_LINK]]`: your booking link (Cal.com, Calendly…). It turns on every "Book a call" button.
-- [ ] **Portrait:** add `public/alex.jpg`, portrait orientation, at least 1200px tall. It switches on automatically with the duotone treatment. Until then the live site shows no frame at all.
 - [ ] **AGility URL:** `agencyUrl` still points at a temporary `-tmp` Vercel URL. Replace it once AGility has a real domain.
 
 ### Projects — `src/content/projects.ts`
@@ -68,10 +66,10 @@ The railings client stays anonymised as "Unified Enquiry Engine", with no brand,
 - [ ] Promo Film: `[[STACK]]`.
 - [ ] **Status chips:** a project only says **Live** when it has a working live link. Use `"prototype"` (shows "Demo") otherwise.
 - [ ] `[[MORE DEMOS]]`: copy an entry to add more.
-- [ ] **Media:** add `public/work/<slug>.mp4`, `.webm` and a poster image (15–30s screen recordings work best). Then set `media: { mp4, webm, poster, alt }`. Rows and case-study heroes switch to your video automatically. Until then, Unified Enquiry Engine shows a live illustration of the flow (`src/components/case/enquiry-demo.tsx`) and other case pages show no media block.
+- [ ] **Media:** screenshots are in for Scamly, SupportAI and AI Data Analyst (`public/work/*.jpg`, set as `media.poster`). For video, add `public/work/<slug>.mp4`, `.webm` and a poster image (15–30s screen recordings work best). Then set `media: { mp4, webm, poster, alt }`. Rows and case-study heroes switch to your video automatically. Until then, Unified Enquiry Engine shows a live illustration of the flow (`src/components/case/enquiry-demo.tsx`) and other case pages show no media block.
 
 ### Case studies — `src/content/case-studies.ts`
-- [ ] Unified Enquiry Engine: `[[TIMELINE]]`, `[[STATUS]]`, `[[METRIC: time to first reply, before → after]]`, `[[NEXT STEP]]`. Keep its repo private: the client stays anonymous.
+- [ ] Unified Enquiry Engine: written from the repo's `docs/STATUS.md` (3 weeks, client demo). Add a real before/after number once the pilot runs. Keep its repo private: the client stays anonymous.
   **Read every sentence.** The problem, approach and three "key decisions" were written from your brief; check that they match what you actually built.
 - [ ] Scamly: `[[RESULT]]` only. Everything else is written from the repo's docs; read it once to check.
 
@@ -79,17 +77,9 @@ The railings client stays anonymised as "Unified Enquiry Engine", with no brand,
 - [ ] `[[METRIC]]` for each service. Leave it as a placeholder until you have a true number from a real client.
 
 ### Education — `src/content/education.ts` (shown as one line in About, in full in the CVs)
-- [ ] `[[YEARS]]` (e.g. 2023 — 2027). **No grades, on purpose.**
-- [ ] `[[CEFR]]`: your English level (A1–C2) and, if any, `[[CERTIFICATE]]` (e.g. Cambridge B2, 2026).
-- [ ] `[[OTHER LANGUAGE]]`, or delete that row.
-- [ ] `[[CERTIFICATES]]`: name, issuer, year. Delete if none.
-- [ ] `[[OTHER SUBJECTS]]` in your focus modules.
+- [ ] `[[MORE CERTIFICATES]]`: name, issuer, year (Goethe A1 is already in).
 
 ### Elsewhere in `messages/*.json`
-- [ ] `about.now`: `[[OTHER]]` (learning) and `[[INTERESTS]]` (outside code). This is what makes the page feel like a person.
-- [ ] `about.next`: `[[FIELD AND COUNTRY]]` for university and `[[LONG-TERM GOAL]]`.
-- [ ] `cv.agilityWhen`: `[[START YEAR]]`.
-- [ ] `milestones.ts`: `[[YEAR]]` for VSCPI and AGility.
 
 ### Regenerate the CV PDF after filling things in
 `public/cv.pdf` is generated from the `/en/cv` page. After updating content:

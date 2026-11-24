@@ -139,7 +139,7 @@
         ]
       ],
       "routed": "Routed to Varna office",
-      "draft": "Draft reply ready"
+      "draft": "Reply sent in under a minute"
     }
   },
   "services": {
@@ -156,7 +156,7 @@
     "title": "I’d rather own an outcome than <em>tick</em> a task.",
     "paras": [
       "I run my work the way I run AGility: I decide, I own it, and I fix what breaks.",
-      "School gives me the fundamentals: Python, NumPy, Pandas, regression. AGility is where I prove them on real businesses.",
+      "School gives me the fundamentals: Python, NumPy, Pandas, data modelling and higher mathematics. AGility is where I prove them on real businesses.",
       "I use AI tools like Claude Code and LLM APIs to ship fast, but I understand and own every system I build. When something breaks, I know where to look."
     ],
     "both": "Most developers can build it. Most founders can sell it. <em>I do both.</em>",
@@ -177,7 +177,7 @@
       },
       {
         "k": "Learning",
-        "v": "Machine learning fundamentals. [[OTHER: what you are learning now]]"
+        "v": "Machine learning, higher mathematics, and AI on my own, alongside Python, NumPy and Pandas at school."
       },
       {
         "k": "Working with",
@@ -185,7 +185,7 @@
       },
       {
         "k": "Outside code",
-        "v": "[[INTERESTS: what you do when you're not building]]"
+        "v": "Training at the gym, music, travelling to new places, and time with the people I love. Collecting memories, not just commits."
       }
     ],
     "nextK": "Next",
@@ -196,15 +196,15 @@
       },
       {
         "k": "Studies",
-        "v": "University abroad. [[FIELD AND COUNTRY: e.g. Computer Science in the Netherlands]]"
-      },
-      {
-        "k": "Long term",
-        "v": "[[LONG-TERM GOAL: what you want to build or become]]"
+        "v": "University in the UAE (MBZUAI or a university in Dubai) or in Singapore."
       },
       {
         "k": "AGility",
-        "v": "Keeps running alongside school."
+        "v": "Scale it: automate the repetitive work in businesses so people can focus on the work that actually grows them. AI that frees people, not replaces them."
+      },
+      {
+        "k": "Mission",
+        "v": "Build AI that protects people instead of threatening them. Scamly is the first project; more will follow."
       }
     ],
     "pathLabel": "The path so far",
@@ -284,7 +284,7 @@
     "honoursK": "Honours and awards",
     "additionalK": "Additional information",
     "agilityRole": "Founder & developer · AGility",
-    "agilityWhen": "[[START YEAR]] — present",
+    "agilityWhen": "June 2026 — present",
     "agilityWhere": "Burgas, Bulgaria · remote",
     "agilityPoints": [
       "Founded and run an AI automation agency for businesses.",

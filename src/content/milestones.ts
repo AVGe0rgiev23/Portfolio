@@ -9,15 +9,15 @@ export type Milestone = {
 
 export const milestones: Milestone[] = [
   {
-    date: "[[YEAR]]",
+    date: "2023",
     title: { en: "VSCPI Burgas", bg: "ПГКПИ Бургас" },
     line: {
-      en: "Studying AI programming: Python, machine learning with NumPy, data modelling with Pandas.",
-      bg: "Уча AI програмиране: Python, машинно обучение с NumPy, моделиране на данни с Pandas.",
+      en: "Started AI programming: Python, machine learning, NumPy, Pandas and data modelling.",
+      bg: "Започнах AI програмиране: Python, машинно обучение, NumPy, Pandas и моделиране на данни.",
     },
   },
   {
-    date: "[[YEAR]]",
+    date: "JUN 2026",
     title: { en: "Founded AGility", bg: "Основах AGility" },
     line: {
       en: "An AI automation agency for businesses: chatbots, enquiry automation, internal tools.",

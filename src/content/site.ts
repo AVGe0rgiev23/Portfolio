@@ -9,7 +9,7 @@ export const site = {
   timeZone: "Europe/Sofia",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "avgeorgiev25@gmail.com",
-  calLink: "[[CAL_LINK]]",
+  calLink: "https://calendly.com/avgeorgiev25",
   cv: "/cv.pdf",
   portrait: "/alex.jpg", // [[/public/alex.jpg]] — add a real portrait
   socials: {

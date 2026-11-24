@@ -36,7 +36,7 @@ const n = (id: string, en: string, bg: string, x: number, y: number, kind?: Diag
 
 export const caseStudies: Record<string, CaseStudy> = {
   "unified-enquiry-engine": {
-    timeline: { en: "[[TIMELINE: e.g. 6 weeks, 2026]]", bg: "[[СРОК: напр. 6 седмици, 2026]]" },
+    timeline: { en: "3 weeks · 2026", bg: "3 седмици · 2026" },
     problem: [
       {
         en: "A railings and balustrade manufacturer with three offices (Sofia, Varna and Burgas) gets enquiries from everywhere at once: the website form, email, Viber, Facebook and phone calls that nobody picks up.",
@@ -49,33 +49,32 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     approach: [
       {
-        en: "Every channel is connected to one ingest layer and normalised into a single enquiry record, so the rest of the system never has to care where a message came from.",
-        bg: "Всеки канал е свързан към един входен слой и се нормализира в един общ запис за запитване, така че останалата система не се интересува откъде е дошло съобщението.",
+        en: "Four channels (the web form with photos, email, Viber and Facebook Messenger) feed one ingest layer, and every message becomes the same enquiry record. The rest of the system never has to care where a message came from.",
+        bg: "Четири канала (уеб формата със снимки, имейл, Viber и Facebook Messenger) влизат в един входен слой и всяко съобщение става един и същ запис за запитване. Останалата система не се интересува откъде е дошло съобщението.",
       },
       {
-        en: "An LLM reads the raw text and extracts the fields that matter to a quote: product, dimensions, city and urgency, as validated structured output. Plain routing rules then send it to the right office, and the model drafts a first reply for a person to check and send.",
-        bg: "LLM чете суровия текст и извлича полетата, които са важни за една оферта — продукт, размери, град и спешност — като валидиран структуриран резултат. После обикновени правила за насочване го пращат в правилния офис, а моделът подготвя първи отговор, който човек проверява и изпраща.",
+        en: "An LLM reads the raw text and extracts who the customer is, what they want, sizes, city and urgency, as validated structured output. It also flags spam, job applications and large jobs. Plain rules then route the enquiry to the right office, with business hours.",
+        bg: "LLM чете суровия текст и извлича кой е клиентът, какво иска, размери, град и спешност, като валидиран структуриран резултат. Отбелязва и спам, кандидатури за работа и големи поръчки. После обикновени правила насочват запитването към правилния офис, според работното време.",
       },
       {
-        en: "Everything shows up live on one dashboard. It runs on a real Viber bot and a real Meta test page, not mock data.",
-        bg: "Всичко се вижда на живо в едно табло. Работи с реален Viber бот и реална тестова Meta страница, а не с фалшиви данни.",
+        en: "The customer gets a reply within a minute, in Bulgarian or English, asking for at most three missing details. If nobody on the team responds, escalation emails go out at 5 and then 15 minutes. Staff see everything live on one dashboard in Bulgarian or English.",
+        bg: "Клиентът получава отговор до минута, на български или английски, с най-много три въпроса за липсващите детайли. Ако никой от екипа не реагира, излизат имейли за ескалация на 5-ата и на 15-ата минута. Служителите виждат всичко на живо в едно табло на български или английски.",
       },
     ],
     diagram: {
       caption: {
-        en: "Five channels in, one record, one routed lead and a drafted reply out.",
-        bg: "Пет канала навътре, един запис, едно насочено запитване и готов отговор навън.",
+        en: "Four channels in, one record, a reply within a minute, and the lead routed to the right office.",
+        bg: "Четири канала навътре, един запис, отговор до минута и запитване, насочено към правилния офис.",
       },
       nodes: [
-        n("form", "Web form", "Уеб форма", 70, 40, "input"),
-        n("email", "Email", "Имейл", 70, 130, "input"),
-        n("viber", "Viber bot", "Viber бот", 70, 220, "input"),
-        n("fb", "Facebook", "Facebook", 70, 310, "input"),
-        n("call", "Missed call", "Пропуснато обаждане", 70, 400, "input"),
+        n("form", "Web form", "Уеб форма", 70, 70, "input"),
+        n("email", "Email", "Имейл", 70, 170, "input"),
+        n("viber", "Viber", "Viber", 70, 270, "input"),
+        n("fb", "Messenger", "Messenger", 70, 370, "input"),
         n("ingest", "Ingest + normalise", "Приемане + нормализиране", 330, 220, "core"),
         n("llm", "LLM extraction", "LLM извличане", 540, 220, "core"),
         n("route", "Routing rules", "Правила за насочване", 740, 130, "core"),
-        n("draft", "Draft reply", "Чернова на отговор", 740, 310, "core"),
+        n("draft", "Reply + validator", "Отговор + проверка", 740, 310, "core"),
         n("offices", "Sofia · Varna · Burgas", "София · Варна · Бургас", 930, 130, "output"),
         n("dash", "Live dashboard", "Live табло", 930, 310, "output"),
       ],
@@ -84,7 +83,6 @@ export const caseStudies: Record<string, CaseStudy> = {
         ["email", "ingest"],
         ["viber", "ingest"],
         ["fb", "ingest"],
-        ["call", "ingest"],
         ["ingest", "llm"],
         ["llm", "route"],
         ["llm", "draft"],
@@ -95,13 +93,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     decisions: [
       {
-        title: { en: "One record for every channel", bg: "Един запис за всеки канал" },
-        body: {
-          en: "Adapters turn each channel into the same shape. Some channel-specific detail is lost in the common view, so the raw payload stays attached for anyone who needs it.",
-          bg: "Адаптерите превръщат всеки канал в една и съща форма. Част от детайлите на канала се губят в общия изглед, затова суровото съобщение остава прикачено за всеки, който има нужда от него.",
-        },
-      },
-      {
         title: { en: "The model reads, the rules route", bg: "Моделът чете, правилата насочват" },
         body: {
           en: "The LLM handles messy human text. Which office gets the lead is decided by plain, auditable code. Rules need maintenance, but routing stays predictable and easy to explain to the client.",
@@ -109,31 +100,42 @@ export const caseStudies: Record<string, CaseStudy> = {
         },
       },
       {
-        title: { en: "Draft, don’t send", bg: "Чернова, не изпращане" },
+        title: { en: "Templates first, then a check", bg: "Първо шаблон, после проверка" },
         body: {
-          en: "The AI writes the first reply, and a person sends it. That's slower than auto-sending, but a wrong price never goes out under the company's name.",
-          bg: "AI пише първия отговор, а човек го изпраща. По-бавно е от автоматичното изпращане, но грешна цена никога не излиза от името на фирмата.",
+          en: "Replies start from approved templates rather than free text, and a validator checks every reply before it goes out. Less creative, but a wrong price or a made-up promise never leaves under the company's name.",
+          bg: "Отговорите тръгват от одобрени шаблони, а не от свободен текст, и валидатор проверява всеки отговор, преди да излезе. По-малко креативно, но грешна цена или измислено обещание никога не излизат от името на фирмата.",
+        },
+      },
+      {
+        title: { en: "The AI answers fast, then steps back", bg: "AI отговаря бързо, после се отдръпва" },
+        body: {
+          en: "The first reply and the follow-up questions go out automatically, because speed wins the job. The moment a person claims the enquiry or replies, the AI only drafts. Each channel can also be switched to draft-and-approve.",
+          bg: "Първият отговор и уточняващите въпроси излизат автоматично, защото бързината печели поръчката. В момента, в който човек поеме запитването или отговори, AI само подготвя чернови. Всеки канал може да се превключи и на „чернова и одобрение“.",
         },
       },
     ],
     result: [
       {
-        en: "Status: client demo, built on live channels. [[STATUS]]",
-        bg: "Статус: клиентско демо, изградено върху реални канали. [[STATUS]]",
+        en: "A client demo, deployed and proven end to end on the web form. Under load, 20 enquiries sent half a second apart were all answered within 50 seconds, none twice.",
+        bg: "Клиентско демо, пуснато и доказано от край до край с уеб формата. Под натоварване 20 запитвания, изпратени през половин секунда, получиха отговор до 50 секунди, без нито едно повторение.",
       },
       {
-        en: "[[METRIC: e.g. time to first reply, before → after]]",
-        bg: "[[METRIC: напр. време до първи отговор, преди → след]]",
+        en: "1,597 unit tests, plus integration and browser tests against the live database. Only test data goes through it until the launch list below is done.",
+        bg: "1597 unit теста, плюс интеграционни и браузърни тестове срещу реалната база данни. Минават само тестови данни, докато не се изпълни списъкът за пускане по-долу.",
       },
     ],
     next: [
       {
-        en: "Pilot it with real traffic at one office first, and measure time-to-first-reply and enquiry-to-quote rate against the old way.",
-        bg: "Пилотно пускане с реален трафик първо в един офис и измерване на времето до първи отговор и дела запитвания, превърнати в оферти, спрямо стария начин.",
+        en: "A pilot at one office on real traffic. Before that: a paid AI provider that doesn't train on the data, a data-processing agreement with the client, their own Viber account and the Meta review for Messenger.",
+        bg: "Пилот в един офис с реален трафик. Преди това: платен AI доставчик, който не се обучава върху данните, договор за обработка на данни с клиента, техен собствен Viber акаунт и одобрението от Meta за Messenger.",
       },
       {
-        en: "[[NEXT STEP]]",
-        bg: "[[СЛЕДВАЩА СТЪПКА]]",
+        en: "Then measure it honestly: time to first reply and the share of enquiries that turn into quotes, against the old way. The dashboard already tracks first-reply time.",
+        bg: "После честно измерване: времето до първи отговор и делът на запитванията, превърнати в оферти, спрямо стария начин. Таблото вече следи времето до първи отговор.",
+      },
+      {
+        en: "After that, what the client needs most: missed calls turned into enquiries (once we know their phone system), and the AI reading photos and PDF drawings.",
+        bg: "След това това, от което клиентът има най-голяма нужда: пропуснатите обаждания да стават запитвания (след като знаем каква телефонна система ползват) и AI да чете снимки и PDF чертежи.",
       },
     ],
   },

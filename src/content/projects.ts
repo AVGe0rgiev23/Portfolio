@@ -47,16 +47,16 @@ export const projects: Project[] = [
       bg: "Производител на парапети · 3 офиса",
     },
     year: "2026",
-    stack: ["Next.js", "TypeScript", "Supabase", "Trigger.dev", "Groq LLM", "Viber & Meta APIs"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Trigger.dev", "Groq LLM", "Viber & Meta APIs", "Resend"],
     status: "demo",
     summary: {
-      en: "One real-time inbox for web form, email, Viber, Facebook and missed calls. AI extracts product, dimensions, city and urgency, drafts a reply in seconds and routes the lead to the right office: Sofia, Varna or Burgas.",
-      bg: "Една входяща кутия в реално време за уеб форма, имейл, Viber, Facebook и пропуснати обаждания. AI извлича продукт, размери, град и спешност, подготвя отговор за секунди и насочва запитването към правилния офис: София, Варна или Бургас.",
+      en: "One real-time inbox for the web form, email, Viber and Facebook Messenger. AI reads each enquiry, pulls out product, sizes, city and urgency, replies within a minute and routes the lead to the right office: Sofia, Varna or Burgas.",
+      bg: "Една входяща кутия в реално време за уеб формата, имейл, Viber и Facebook Messenger. AI чете всяко запитване, извлича продукт, размери, град и спешност, отговаря до минута и насочва запитването към правилния офис: София, Варна или Бургас.",
     },
     role: { en: "Solo: scoping, architecture, build", bg: "Сам: обхват, архитектура, разработка" },
     built: {
-      en: "Everything: channel integrations (real Viber bot, Meta test page), the LLM extraction pipeline, routing rules and the live dashboard.",
-      bg: "Всичко: интеграциите с каналите (реален Viber бот, тестова Meta страница), LLM pipeline-а за извличане, правилата за насочване и live таблото.",
+      en: "Everything: the four channel integrations, the AI pipeline (extraction, template-first replies and a validator), routing and escalation rules, and the live dashboard in Bulgarian and English.",
+      bg: "Всичко: интеграциите с четирите канала, AI pipeline-а (извличане, отговори по шаблон и проверка преди изпращане), правилата за насочване и ескалация и live таблото на български и английски.",
     },
     team: { en: "Solo", bg: "Самостоятелно" },
     // Private client repo. Keep it private: the client stays anonymous everywhere.
@@ -64,8 +64,8 @@ export const projects: Project[] = [
     featured: true,
     media: {
       alt: {
-        en: "Dashboard showing enquiries from five channels merged into one inbox, each tagged with product, city and urgency",
-        bg: "Табло със запитвания от пет канала, обединени в една кутия, всяко с продукт, град и спешност",
+        en: "Dashboard showing enquiries from four channels merged into one inbox, each tagged with product, city and urgency",
+        bg: "Табло със запитвания от четири канала, обединени в една кутия, всяко с продукт, град и спешност",
       },
     },
     caseStudy: true,
@@ -93,9 +93,10 @@ export const projects: Project[] = [
     links: { live: "https://scamly-ochre.vercel.app", code: "https://github.com/AVGe0rgiev23/Scamly" },
     featured: true,
     media: {
+      poster: "/work/scamly.jpg",
       alt: {
-        en: "Scamly app screen warning about a suspicious incoming call",
-        bg: "Екран на Scamly с предупреждение за подозрително обаждане",
+        en: "Scamly home page: a sample call checked on a phone, with a risk gauge and the reason for the verdict",
+        bg: "Началната страница на Scamly: примерно обаждане, проверено на телефон, с уред за риска и причината за оценката",
       },
     },
     caseStudy: true,
@@ -119,6 +120,13 @@ export const projects: Project[] = [
     team: { en: "Solo", bg: "Самостоятелно" },
     links: { live: "https://supportai-beta.vercel.app", code: "https://github.com/AVGe0rgiev23/AIsupport" },
     featured: true,
+    media: {
+      poster: "/work/supportai.jpg",
+      alt: {
+        en: "SupportAI home page with a chat widget answering a returns question from the shop's own policy",
+        bg: "Началната страница на SupportAI с чат уиджет, който отговаря на въпрос за връщане по правилата на магазина",
+      },
+    },
   },
   {
     slug: "ai-data-analyst",
@@ -140,6 +148,13 @@ export const projects: Project[] = [
     team: { en: "Solo", bg: "Самостоятелно" },
     links: { live: "[[URL]]", code: "https://github.com/AVGe0rgiev23/ai-data-analyst" },
     featured: true,
+    media: {
+      poster: "/work/ai-data-analyst.jpg",
+      alt: {
+        en: "AI Data Analyst answering a revenue question: the agent's SQL steps, a corrected query, a results table and a line chart by region",
+        bg: "AI анализатор на данни отговаря на въпрос за приходите: стъпките със SQL, поправена заявка, таблица с резултати и графика по региони",
+      },
+    },
   },
   {
     slug: "ai-chatbot",

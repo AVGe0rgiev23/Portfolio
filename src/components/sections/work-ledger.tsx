@@ -1,4 +1,5 @@
 import { ViewTransition } from "react";
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { visibleProjects as projects, type Project, type ProjectStatus } from "@/content/projects";
@@ -42,28 +43,49 @@ export function Chips({ items }: { items: string[] }) {
   );
 }
 
+/**
+ * Project media without video: the screenshot in media.poster if there is one,
+ * otherwise a designed placeholder card (with the "media pending" marker in dev only).
+ */
 export function Cover({
   p,
   index,
   pending,
+  locale = "en",
   always = false,
+  priority = false,
   className,
 }: {
   p: Project;
   index: string;
   pending: string;
+  locale?: "en" | "bg";
   /** Show on touch devices too (case-study pages). */
   always?: boolean;
+  priority?: boolean;
   className?: string;
 }) {
+  const frame = cn(
+    "relative aspect-[16/10] overflow-hidden rounded-[2px] border border-line bg-sunken",
+    !always && "dossier__cover",
+    className,
+  );
+  if (p.media?.poster) {
+    return (
+      <div className={frame}>
+        <Image
+          src={p.media.poster}
+          alt={p.media.alt[locale]}
+          fill
+          priority={priority}
+          sizes="(min-width: 768px) 60vw, 100vw"
+          className="object-cover object-top"
+        />
+      </div>
+    );
+  }
   return (
-    <div
-      className={cn(
-        "relative aspect-[16/10] overflow-hidden rounded-[2px] border border-line bg-sunken",
-        !always && "dossier__cover",
-        className,
-      )}
-    >
+    <div className={frame}>
       <div
         className="absolute inset-0 opacity-60"
         style={{
@@ -205,7 +227,7 @@ export async function WorkLedger() {
                             />
                           ) : (
                             <ViewTransition name={`media-${p.slug}`} share="morph" default="none">
-                              <Cover p={p} index={index} pending={t("mediaMissing")} />
+                              <Cover p={p} index={index} pending={t("mediaMissing")} locale={locale} />
                             </ViewTransition>
                           )}
                         </div>
