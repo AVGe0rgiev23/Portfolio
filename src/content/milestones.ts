@@ -25,11 +25,11 @@ export const milestones: Milestone[] = [
     },
   },
   {
-    date: "[[YEAR]]",
-    title: { en: "IRO, Vienna", bg: "IRO, Виена" },
+    date: "NOV 2026",
+    title: { en: "Robo League, Varna", bg: "Robo League, Варна" },
     line: {
-      en: "Team of three, autonomous car. I own electronics, camera and power.",
-      bg: "Екип от трима, автономна кола. Отговарям за електрониката, камерата и захранването.",
+      en: "First robotics competition. Line-following robot, clean run in 36.6 s.",
+      bg: "Първо състезание по роботика. Робот, който следва линия, чисто бягане за 36,6 с.",
     },
   },
   {
@@ -38,6 +38,14 @@ export const milestones: Milestone[] = [
     line: {
       en: "Competing with Scamly in Distributed Applications, Sofia.",
       bg: "Участие със Scamly в категория „Разпределени приложения“, София.",
+    },
+  },
+  {
+    date: "JAN 2027",
+    title: { en: "IRO, Vienna", bg: "IRO, Виена" },
+    line: {
+      en: "Team of three, autonomous car. I own electronics, camera and power.",
+      bg: "Екип от трима, автономна кола. Отговарям за електрониката, камерата и захранването.",
     },
   },
   {

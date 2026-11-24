@@ -8,7 +8,7 @@ export const site = {
   country: "BG",
   timeZone: "Europe/Sofia",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  email: "[[EMAIL]]",
+  email: "avgeorgiev25@gmail.com",
   calLink: "[[CAL_LINK]]",
   cv: "/cv.pdf",
   portrait: "/alex.jpg", // [[/public/alex.jpg]] — add a real portrait

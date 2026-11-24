@@ -44,7 +44,7 @@ export function PathTimeline({ entries, nowLabel }: { entries: Entry[]; nowLabel
   return (
     <ol
       ref={root}
-      className="path relative grid gap-10 pl-8 md:grid-cols-5 md:gap-6 md:pl-0 md:pt-10"
+      className="path relative grid gap-10 pl-8 md:grid-cols-6 md:gap-6 md:pl-0 md:pt-10"
       style={{ ["--p" as string]: 0 }}
     >
       {/* Track + drawn progress */}

@@ -139,7 +139,7 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   scamly: {
-    timeline: { en: "[[TIMELINE]] · competing December 2026", bg: "[[СРОК]] · състезание декември 2026" },
+    timeline: { en: "Nov–Dec 2026 · competing 4–6 December 2026", bg: "ноем.–дек. 2026 · състезание 4–6 декември 2026" },
     problem: [
       {
         en: "Phone scams target older people because they work: a calm voice, an urgent story and a request for money or bank details. The people who could stop it, their families, usually find out afterwards.",
@@ -148,25 +148,29 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     approach: [
       {
-        en: "Scamly protects the person on the phone and brings their family into the loop. [[APPROACH: how Scamly detects or flags a suspicious call]]",
-        bg: "Scamly пази човека на телефона и включва семейството му. [[ПОДХОД: как Scamly открива или маркира подозрително обаждане]]",
+        en: "During or right after a suspicious call, the person taps one big button and answers three or four yes/no questions: who the caller says they are, whether they want money or valuables, and whether they are rushing them or saying “don't tell anyone”. A red, yellow or green verdict comes back in plain Bulgarian, with a one-tap button to call a relative.",
+        bg: "По време на подозрително обаждане или веднага след него човекът натиска един голям бутон и отговаря на три-четири въпроса с да/не: за кого се представя обаждащият се, иска ли пари или ценности и дали го притиска или казва „не казвайте на никого“. Връща се червена, жълта или зелена оценка на разбираем български, с бутон за обаждане на близък с едно докосване.",
       },
       {
-        en: "It's built as a distributed application for the National IT Tournament “John Atanasov”. [[ARCHITECTURE: services, devices, data flow]]",
-        bg: "Изграден е като разпределено приложение за Националния ИТ турнир „Джон Атанасов“. [[АРХИТЕКТУРА: услуги, устройства, поток на данни]]",
+        en: "The verdict comes from a rule-based detection engine written in plain TypeScript. It normalises and transliterates the text, fuzzy-matches known scam phrases, scores the signals and applies hard rules that force a red verdict, such as “police” plus a request for money. The family sees the result live, with web push and email as backup channels.",
+        bg: "Оценката идва от енджин за разпознаване, базиран на правила и написан на чист TypeScript. Той нормализира и транслитерира текста, търси познати фрази от измами с fuzzy съвпадение, точкува сигналите и прилага твърди правила, които налагат червена оценка, например „полиция“ плюс искане на пари. Семейството вижда резултата на живо, а push известия и имейл служат като резервни канали.",
+      },
+      {
+        en: "It's built as a distributed application for the National IT Tournament “John Atanasov”: a Next.js PWA on Vercel and Supabase Postgres with row-level security and Realtime. Guests can also read about current scam scripts, report a scam, and see a map of reports by district.",
+        bg: "Изграден е като разпределено приложение за Националния ИТ турнир „Джон Атанасов“: Next.js PWA на Vercel и Supabase Postgres с row-level security и Realtime. Гостите могат също да четат за актуалните схеми, да подадат сигнал и да видят карта на сигналите по области.",
       },
     ],
     diagram: {
       caption: {
-        en: "Concept flow. Replace the placeholder node with how detection actually works.",
-        bg: "Концептуален поток. Замени плейсхолдъра с това как реално работи откриването.",
+        en: "One call check, one verdict on the phone, and a live alert to the family.",
+        bg: "Една проверка на обаждане, една оценка на телефона и сигнал на живо към семейството.",
       },
       nodes: [
-        n("call", "Incoming call", "Входящо обаждане", 80, 220, "input"),
-        n("app", "Scamly on the phone", "Scamly на телефона", 320, 220, "core"),
-        n("check", "Scam check", "Проверка за измама", 560, 220, "core"), // [[DETECTION: name the real method]]
-        n("warn", "Warning on screen", "Предупреждение на екрана", 820, 120, "output"),
-        n("family", "Family alert", "Сигнал към семейството", 820, 320, "output"),
+        n("call", "Suspicious call", "Подозрително обаждане", 80, 220, "input"),
+        n("app", "Big-button questions", "Въпроси с големи бутони", 300, 220, "core"),
+        n("check", "Rule engine + hard rules", "Енджин с правила", 540, 220, "core"),
+        n("warn", "Verdict on screen", "Оценка на екрана", 820, 120, "output"),
+        n("family", "Live family alert", "Сигнал към семейството", 820, 320, "output"),
       ],
       edges: [
         ["call", "app"],
@@ -177,21 +181,43 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     decisions: [
       {
-        title: { en: "[[DECISION 1]]", bg: "[[РЕШЕНИЕ 1]]" },
-        body: { en: "[[What you chose, what it cost, why it was worth it]]", bg: "[[Какво избра, на каква цена, защо си струваше]]" },
+        title: { en: "Green never says “safe”", bg: "Зеленото никога не казва „безопасно“" },
+        body: {
+          en: "A green result says there are no typical signs of a scam, and suggests hanging up and calling the relative back on a number you know. A false “safe” is the worst bug this app could have, so the wording is part of the safety design.",
+          bg: "Зеленият резултат казва, че няма типични признаци на измама, и съветва да затворите и да се обадите сами на близкия си на номера, който знаете. Фалшивото „безопасно“ е най-лошата грешка, която това приложение може да има, затова формулировката е част от защитата.",
+        },
       },
       {
-        title: { en: "[[DECISION 2]]", bg: "[[РЕШЕНИЕ 2]]" },
-        body: { en: "[[…]]", bg: "[[…]]" },
+        title: { en: "Rules decide, AI can only add caution", bg: "Правилата решават, AI може само да добави предпазливост" },
+        body: {
+          en: "The verdict comes from tested rules, not a model, so it can be explained and it still works when an AI service is down. Any AI second opinion may raise the risk level but is never allowed to lower a red verdict.",
+          bg: "Оценката идва от тествани правила, а не от модел, така че може да бъде обяснена и работи, дори когато AI услугата не отговаря. Второ мнение от AI може да повиши риска, но никога не може да свали червена оценка.",
+        },
+      },
+      {
+        title: { en: "No password for the older person", bg: "Без парола за възрастния човек" },
+        body: {
+          en: "The family creates the profile and pairs the phone once with a 6-digit code or a QR code. After that it stays signed in, because a login screen is exactly where an older user gives up.",
+          bg: "Семейството създава профила и сдвоява телефона веднъж с 6-цифрен код или QR код. След това той остава вписан, защото екранът за вход е точно мястото, където възрастният потребител се отказва.",
+        },
       },
     ],
     result: [
       {
-        en: "Competing in the Distributed Applications category, Sofia, December 2026. Result: [[RESULT]]",
-        bg: "Участва в категория „Разпределени приложения“, София, декември 2026. Резултат: [[RESULT]]",
+        en: "Competing in the Distributed Applications category, Sofia, 4–6 December 2026. Result: [[RESULT]]",
+        bg: "Участва в категория „Разпределени приложения“, София, 4–6 декември 2026. Резултат: [[RESULT]]",
+      },
+      {
+        en: "Tested before it reaches the jury: 661 unit tests, 111 end-to-end tests on desktop and phone, and 180 database security checks.",
+        bg: "Тестван, преди да стигне до журито: 661 unit теста, 111 end-to-end теста на компютър и телефон и 180 проверки на сигурността на базата данни.",
       },
     ],
-    next: [{ en: "[[NEXT STEP]]", bg: "[[СЛЕДВАЩА СТЪПКА]]" }],
+    next: [
+      {
+        en: "Test it with real families, then work with the police or a municipality to reach the people who need it most.",
+        bg: "Тестове с реални семейства, а след това партньорство с полицията или община, за да стигне до хората, които най-много имат нужда от него.",
+      },
+    ],
   },
 };
 

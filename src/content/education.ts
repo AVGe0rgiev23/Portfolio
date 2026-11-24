@@ -16,7 +16,7 @@ export const school = {
   specialty: { en: "AI programming", bg: "AI програмиране" } as L,
   years: "[[YEARS: e.g. 2023 — 2027]]",
   /** Which class you are in — not grades. */
-  klass: { en: "[[CLASS: e.g. 11th grade]]", bg: "[[КЛАС: напр. 11 клас]]" } as L,
+  klass: { en: "11th grade", bg: "11 клас" } as L,
   modules: ["Python", "Machine learning", "NumPy", "Linear regression", "Pandas", "Data modelling", "[[OTHER SUBJECTS]]"],
 };
 

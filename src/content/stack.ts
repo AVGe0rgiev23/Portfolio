@@ -1,4 +1,4 @@
-/** Shown in the proof-strip marquee. Only list what you actually use. */
+/** Used by the About monogram, the CV skills line and JSON-LD. Only list what you actually use. */
 export const stack = [
   "Python",
   "Pandas",
@@ -6,6 +6,8 @@ export const stack = [
   "scikit-learn",
   "Next.js",
   "TypeScript",
+  "SQL",
+  "Supabase / Postgres",
   "LLM APIs",
   "RAG",
   "Automation workflows",
@@ -13,4 +15,5 @@ export const stack = [
   "Resend",
   "Vercel",
   "Claude Code",
+  "C++ (Arduino)",
 ];

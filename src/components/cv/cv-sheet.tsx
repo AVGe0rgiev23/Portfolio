@@ -5,6 +5,7 @@ import { visibleProjects as projects } from "@/content/projects";
 import { school, languages } from "@/content/education";
 import { stack } from "@/content/stack";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
+import { SHOW_PLACEHOLDERS, filled } from "@/content/types";
 
 const H = ({ children }: { children: React.ReactNode }) => (
   <h2 className="cv-h t-mono mb-3 border-b pb-2 text-[10.5px]">{children}</h2>
@@ -20,6 +21,13 @@ export async function CvSheet({ locale, variant }: { locale: AppLocale; variant:
   const t = await getTranslations("cv");
   const euro = variant === "europass";
   const selected = projects.slice(0, 5);
+  const langs = languages.filter((l) => SHOW_PLACEHOLDERS || filled(l.name[locale]));
+  const levelOf = (level: string) =>
+    level === "native" ? (locale === "bg" ? "роден" : "native") : SHOW_PLACEHOLDERS || filled(level) ? level : "";
+  const firstSentence = (s: string) => {
+    const first = s.split(". ")[0];
+    return /[.!?]$/.test(first) ? first : `${first}.`;
+  };
   const contact = [
     `${site.city}, Bulgaria`,
     site.email,
@@ -67,7 +75,7 @@ export async function CvSheet({ locale, variant }: { locale: AppLocale; variant:
           <li key={p.slug}>
             <span className="font-medium">{p.name[locale]}</span>
             <span className="cv-muted"> — {p.role[locale]}. </span>
-            <PlaceholderText>{p.summary[locale].split(". ")[0] + "."}</PlaceholderText>
+            <PlaceholderText>{firstSentence(p.summary[locale])}</PlaceholderText>
           </li>
         ))}
       </ul>
@@ -84,6 +92,7 @@ export async function CvSheet({ locale, variant }: { locale: AppLocale; variant:
         <li>
           <PlaceholderText>{t("atanasov")}</PlaceholderText>
         </li>
+        <li>{t("robotline")}</li>
       </ul>
     </section>
   );
@@ -114,7 +123,7 @@ export async function CvSheet({ locale, variant }: { locale: AppLocale; variant:
             </tr>
           </thead>
           <tbody>
-            {languages.map((l) => (
+            {langs.map((l) => (
               <tr key={l.name.en} className="border-t border-[var(--cv-line)]">
                 <th scope="row" className="py-1.5 pr-2 text-left font-medium">
                   <PlaceholderText>{l.name[locale]}</PlaceholderText>
@@ -141,13 +150,15 @@ export async function CvSheet({ locale, variant }: { locale: AppLocale; variant:
         </div>
       ) : (
         <p className="text-[12.5px]">
-          {languages.map((l, i) => (
+          {langs.map((l, i) => (
             <span key={l.name.en}>
               {i > 0 && " · "}
-              <PlaceholderText>{l.name[locale]}</PlaceholderText>{" "}
-              <span className="cv-muted">
-                (<PlaceholderText>{l.level === "native" ? (locale === "bg" ? "роден" : "native") : l.level}</PlaceholderText>)
-              </span>
+              <PlaceholderText>{l.name[locale]}</PlaceholderText>
+              {levelOf(l.level) && (
+                <span className="cv-muted">
+                  {" "}(<PlaceholderText>{levelOf(l.level)}</PlaceholderText>)
+                </span>
+              )}
             </span>
           ))}
         </p>
