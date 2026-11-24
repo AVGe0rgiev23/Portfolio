@@ -11,12 +11,11 @@ import { isLocale } from "@/i18n/routing";
 import { scrollToId, useLenis } from "@/components/motion/smooth-scroll";
 import { copyEmail } from "@/components/ui/copy-email";
 
-const SECTIONS = ["what", "work", "studies", "services", "about", "contact"] as const;
+const SECTIONS = ["work", "about", "services", "contact"] as const;
 
 /** ⌘K / Ctrl+K anywhere. Also opened by the nav and footer buttons (event "ag:palette"). */
 export function CommandPalette({ initialOpen = false }: { initialOpen?: boolean }) {
   const t = useTranslations("palette");
-  const tn = useTranslations("island");
   const tnav = useTranslations("nav");
   const tc = useTranslations("contact");
   const raw = useLocale();
@@ -62,7 +61,7 @@ export function CommandPalette({ initialOpen = false }: { initialOpen?: boolean 
       router.push(`/#${id}`);
     });
 
-  const label = (id: (typeof SECTIONS)[number]) => (id === "what" ? tn("what") : tnav(id));
+  const label = (id: (typeof SECTIONS)[number]) => tnav(id);
 
   return (
     <AnimatePresence>

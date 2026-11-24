@@ -4,10 +4,13 @@
 It is built for three readers at once:
 
 1. **Companies hiring** for AI, automation or Python. They get the work, the stack, a CV in one click and contact details.
-2. **Businesses** that could become AGility clients. They get services in plain language, the process, a booking link and a contact form.
-3. **Schools and programmes.** They get education, languages, certificates, competitions and a Europass-format CV. No section is labelled for any one audience.
+2. **Businesses** that could become AGility clients. They get services in plain language, a booking link and a contact form.
+3. **Schools and programmes.** They get education, languages, goals and a Europass-format CV. No section is labelled for any one audience.
 
 Bilingual: `/en` and `/bg`.
+
+**The homepage, in order:** Hero (who, what, links) → 01 Work (featured projects + a compact "More" list) →
+02 About (story, education, Now / Next, the path so far) → 03 AGility (four services) → 04 Contact.
 
 ---
 
@@ -29,12 +32,12 @@ npm run lint
 | What | File |
 |---|---|
 | Identity, email, booking link, socials | `src/content/site.ts` |
-| Projects (Selected work) | `src/content/projects.ts` |
+| Projects (Selected work). `featured: true` = big row, otherwise the "More" list | `src/content/projects.ts` |
 | Case studies (`/work/[slug]`) | `src/content/case-studies.ts` |
 | AGility services | `src/content/services.ts` |
 | Timeline (the path so far) | `src/content/milestones.ts` |
 | School, languages, certificates | `src/content/education.ts` |
-| Stack marquee + monogram words | `src/content/stack.ts` |
+| Stack words (About monogram, JSON-LD) | `src/content/stack.ts` |
 | All other copy, EN + BG | `messages/en.json`, `messages/bg.json` |
 | Design tokens (colours, type, motion) | `src/app/globals.css` |
 
@@ -55,16 +58,19 @@ The railings client stays anonymised as "Unified Enquiry Engine", with no brand,
 ### Identity and contact — `src/content/site.ts`
 - [ ] `[[EMAIL]]`: your email. It turns on copy-to-clipboard, the palette action and JSON-LD.
 - [ ] `[[CAL_LINK]]`: your booking link (Cal.com, Calendly…). It turns on every "Book a call" button.
-- [ ] **Portrait:** add `public/alex.jpg`, portrait orientation, at least 1200px tall. It switches on automatically with the duotone treatment.
+- [ ] **Portrait:** add `public/alex.jpg`, portrait orientation, at least 1200px tall. It switches on automatically with the duotone treatment. Until then the live site shows no frame at all.
+- [ ] **AGility URL:** `agencyUrl` still points at a temporary `-tmp` Vercel URL. Replace it once AGility has a real domain.
 
 ### Projects — `src/content/projects.ts`
 - [ ] `[[STACK]]` on each project (real technologies only).
-- [ ] SupportAI, AI Chatbot, AI Data Analyst, Promo Film: `[[ONE-LINE DESCRIPTION]]`, `[[WHAT YOU BUILT]]`, `[[URL]]` (live), `[[GITHUB]]` (code), `[[DETAILS]]`.
-- [ ] Scamly: `[[WHAT YOU PERSONALLY BUILT ON SCAMLY]]`, `[[TEAMMATE]]`, `[[GITHUB]]`, `[[RESULT]]` (after December 2026).
-- [ ] IRO robot: `[[YEAR]]`, `[[RESULT]]`.
-- [ ] **Status chips:** four projects say **Live**. Change to `"demo"` or `"internal"` if a project isn't actually public yet.
+- [ ] SupportAI and AI Chatbot: `[[ONE-LINE DESCRIPTION]]` (each stays hidden until it has one) and `[[WHAT YOU BUILT]]`. SupportAI's live and code links are already in.
+- [ ] AI Data Analyst, AI Chatbot, Promo Film: `[[URL]]` (live). When a real URL goes in, change `status` from `"prototype"` to `"live"`.
+- [ ] Scamly: `[[WHAT YOU PERSONALLY BUILT ON SCAMLY]]`, `[[TEAMMATE]]`, `[[RESULT]]` (after December 2026). Live and code links are already in.
+- [ ] IRO robot: `[[YEAR]]`, `[[RESULT]]`. If `github.com/AVGe0rgiev23/RobotLine` is this robot, add it as `links.code`.
+- [ ] AGility OS: add `github.com/AVGe0rgiev23/AGility-system-` as `links.code` if you're happy for it to be public-facing.
+- [ ] **Status chips:** a project only says **Live** when it has a working live link. Use `"prototype"` (shows "Demo") otherwise.
 - [ ] `[[MORE DEMOS]]`: copy an entry to add more.
-- [ ] **Media:** add `public/work/<slug>.mp4`, `.webm` and a poster image. Then set `media: { mp4, webm, poster, alt }`. Rows and case-study heroes switch from the "media pending" cover to your video automatically.
+- [ ] **Media:** add `public/work/<slug>.mp4`, `.webm` and a poster image (15–30s screen recordings work best). Then set `media: { mp4, webm, poster, alt }`. Rows and case-study heroes switch to your video automatically. Until then, Unified Enquiry Engine shows a live illustration of the flow (`src/components/case/enquiry-demo.tsx`) and other case pages show no media block.
 
 ### Case studies — `src/content/case-studies.ts`
 - [ ] Unified Enquiry Engine: `[[TIMELINE]]`, `[[STATUS]]`, `[[METRIC: time to first reply, before → after]]`, `[[NEXT STEP]]`.
@@ -74,17 +80,16 @@ The railings client stays anonymised as "Unified Enquiry Engine", with no brand,
 ### Services — `src/content/services.ts`
 - [ ] `[[METRIC]]` for each service. Leave it as a placeholder until you have a true number from a real client.
 
-### Education — `src/content/education.ts` and `messages/*.json → studies`
+### Education — `src/content/education.ts` (shown as one line in About, in full in the CVs)
 - [ ] `[[YEARS]]` (e.g. 2023 — 2027) and `[[CLASS]]` (e.g. 11th grade). **No grades, on purpose.**
 - [ ] `[[CEFR]]`: your English level (A1–C2) and, if any, `[[CERTIFICATE]]` (e.g. Cambridge B2, 2026).
 - [ ] `[[OTHER LANGUAGE]]`, or delete that row.
 - [ ] `[[CERTIFICATES]]`: name, issuer, year. Delete if none.
 - [ ] `[[OTHER SUBJECTS]]` in your focus modules.
-- [ ] `studies.docs.refs`: `[[REFERENCE: teacher name and subject]]` (optional).
 
 ### Elsewhere in `messages/*.json`
-- [ ] `proof.facts[0]`: `[[N]]` shipped demos (count only what's live or on GitHub).
-- [ ] `about.learningList`, `about.toolsList`: `[[OTHER]]`.
+- [ ] `about.now`: `[[OTHER]]` (learning) and `[[INTERESTS]]` (outside code). This is what makes the page feel like a person.
+- [ ] `about.next`: `[[FIELD AND COUNTRY]]` for university and `[[LONG-TERM GOAL]]`.
 - [ ] `cv.agilityWhen`: `[[START YEAR]]`.
 - [ ] `milestones.ts`: `[[YEAR]]` for VSCPI, AGility and IRO.
 
@@ -100,14 +105,12 @@ The `/cv/europass` page prints the same way.
 
 ## Contact form (Resend)
 
-The business form on `/#contact` posts to a server action (`src/app/actions/contact.ts`). It uses:
+The form on `/#contact` only appears once `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are set, so it never promises a message that can't be sent. It posts to a server action (`src/app/actions/contact.ts`). It uses:
 - zod validation.
 - A honeypot field and a 2.5s time trap.
 - An in-memory rate limit: 3 messages per 10 minutes per IP.
 
 It sends a plain-text email through [Resend](https://resend.com) (free tier).
-Until it's configured, the form politely tells visitors to email you instead.
-
 ```bash
 cp .env.example .env.local
 ```
@@ -145,7 +148,7 @@ vercel --prod
 - **Next.js 16** (App Router, Cache Components, Partial Prefetching), **TypeScript strict**, **Tailwind CSS v4**.
 - **next-intl** with `/en` + `/bg`, using `next/root-params`. Browser language is detected on the first visit only, then the choice is remembered.
 - **Signal Field:** a custom raw-WebGL particle shader (no three.js). All motion runs in one vertex shader. It lazy-loads after first paint, pauses off-screen, caps DPR at 1.5, and falls back to a server-rendered SVG poster for reduced motion and low-power devices.
-- **GSAP + ScrollTrigger** for the ledger choreography, process rail and timeline. **Lenis** smooth scroll on desktop only. **Motion** for UI micro-interactions. React **`<ViewTransition>`** morphs a dossier row into its case-study hero.
+- **GSAP + ScrollTrigger** for the ledger choreography and timeline. **Lenis** smooth scroll on desktop only. **Motion** for UI micro-interactions. React **`<ViewTransition>`** morphs a dossier row into its case-study hero.
 - **⌘K command palette** (cmdk, lazy-loaded on first use), status island, data trail over Selected work, and a lightly styled system cursor (pure CSS, falls back to the normal cursor).
 - **SEO:** localized metadata, hreflang, sitemap, robots, JSON-LD `Person` + `Organization`, dynamic OG images per page and language (`next/og`).
 - **Accessibility:** keyboard navigable, visible ember focus rings, AA contrast, `prefers-reduced-motion` respected everywhere.

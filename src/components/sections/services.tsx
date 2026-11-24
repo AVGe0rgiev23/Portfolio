@@ -6,9 +6,8 @@ import { SectionHead } from "@/components/ui/section-head";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
 import { SHOW_PLACEHOLDERS, filled } from "@/content/types";
 import { Spotlight } from "@/components/ui/spotlight";
-import { ProcessRail } from "./process-rail";
 
-/** 04 — Services (AGility), with the process as a short horizontal run. */
+/** 03 — AGility: the four services in one line each, and the way in. */
 export async function Services() {
   const t = await getTranslations("services");
   const raw = await getLocale();
@@ -20,7 +19,7 @@ export async function Services() {
       <div className="frame">
         <SectionHead
           id="services-title"
-          n="04"
+          n="03"
           label={t("index")}
           meta={t("meta")}
           title={t.rich("title", { em: (c) => <em className="em">{c}</em> })}
@@ -31,7 +30,7 @@ export async function Services() {
           {services.map((s, i) => (
             <article
               key={s.id}
-              className="spot group relative flex flex-col gap-8 bg-bg p-6 md:p-10"
+              className="spot group relative flex flex-col gap-6 bg-bg p-6 md:p-8"
               data-reveal="fade"
               style={{ ["--d" as string]: i }}
             >
@@ -41,20 +40,15 @@ export async function Services() {
               </div>
               <div>
                 <h3 className="t-h3">{s.title[locale]}</h3>
-                <p className="mt-5 font-serif text-[1.35rem] italic leading-snug text-muted">“{s.problem[locale]}”</p>
+                <p className="mt-4 font-serif text-[1.35rem] italic leading-snug text-muted">“{s.problem[locale]}”</p>
               </div>
-              <dl className="mt-auto grid gap-4 border-t border-line pt-6 text-[15px] leading-relaxed sm:grid-cols-[8rem_1fr]">
-                <dt className="t-mono pt-[3px] text-faint">{t("build")}</dt>
-                <dd className="text-text/85">{s.build[locale]}</dd>
-                {(SHOW_PLACEHOLDERS || filled(s.result[locale])) && (
-                  <>
-                    <dt className="t-mono pt-[3px] text-faint">{t("result")}</dt>
-                    <dd>
-                      <PlaceholderText>{s.result[locale]}</PlaceholderText>
-                    </dd>
-                  </>
-                )}
-              </dl>
+              {/* Results come back automatically once a service has a true number from a real client. */}
+              {(SHOW_PLACEHOLDERS || filled(s.result[locale])) && (
+                <p className="t-mono mt-auto border-t border-line pt-5 text-[11px] text-text/85">
+                  <span className="text-faint">{t("result")} · </span>
+                  <PlaceholderText>{s.result[locale]}</PlaceholderText>
+                </p>
+              )}
             </article>
           ))}
         </Spotlight>
@@ -76,11 +70,6 @@ export async function Services() {
             {t("visit")} ↗
           </a>
         </div>
-
-        <p className="t-mono mb-8 mt-24 text-muted md:mt-32">{t("processLabel")}</p>
-      </div>
-      <div className="frame">
-        <ProcessRail steps={t.raw("steps")} />
       </div>
     </section>
   );

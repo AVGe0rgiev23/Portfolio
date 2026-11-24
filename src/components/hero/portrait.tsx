@@ -4,12 +4,14 @@ import Image from "next/image";
 import { PortraitFrame } from "./portrait-frame";
 import { site } from "@/content/site";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
+import { SHOW_PLACEHOLDERS } from "@/content/types";
 
 export const hasPortrait = () => existsSync(path.join(process.cwd(), "public", site.portrait.replace(/^\//, "")));
 
 /**
  * Editorial portrait. Drop a photo at /public/alex.jpg and it switches on automatically
- * (duotone graphite → bone, film grain, ember rim light on hover). Until then, a designed slot.
+ * (duotone graphite → bone, film grain, ember rim light on hover). Until then, a designed slot
+ * in local dev only: the live site shows nothing rather than an empty frame.
  */
 export function Portrait({
   alt,
@@ -24,9 +26,11 @@ export function Portrait({
   sizes?: string;
   className?: string;
 }) {
+  const has = hasPortrait();
+  if (!has && !SHOW_PLACEHOLDERS) return null;
   return (
     <PortraitFrame className={className} fig={fig}>
-      {hasPortrait() ? (
+      {has ? (
         <>
           <Image src={site.portrait} alt={alt} fill priority={priority} sizes={sizes} className="portrait__img object-cover" />
           <div className="portrait__tone" aria-hidden />

@@ -7,12 +7,16 @@ import { Link } from "@/i18n/navigation";
 import { isLocale, type AppLocale } from "@/i18n/routing";
 import { visibleProjects as projects, getProject } from "@/content/projects";
 import { getCaseStudy } from "@/content/case-studies";
-import { isPlaceholder } from "@/content/types";
+import { SHOW_PLACEHOLDERS, filled, isPlaceholder } from "@/content/types";
 import { SectionIndex } from "@/components/ui/section-index";
 import { PlaceholderText } from "@/components/ui/placeholder-text";
 import { StatusChip, Chips, Cover } from "@/components/sections/work-ledger";
 import { DossierVideo } from "@/components/sections/dossier-video";
 import { ArchitectureDiagram } from "@/components/case/architecture-diagram";
+import { EnquiryDemo, type EnquiryDemoCopy } from "@/components/case/enquiry-demo";
+
+/** Case studies that show a live illustration of the system until a real recording exists. */
+const DEMOS: Record<string, true> = { "unified-enquiry-engine": true };
 
 /**
  * Every slug is prerendered at build (generateStaticParams) and dossier links prefetch the
@@ -91,12 +95,15 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
   const code = p.links.code && !isPlaceholder(p.links.code) ? p.links.code : null;
   const hasVideo = Boolean(p.media?.mp4 || p.media?.webm);
 
+  const keep = (s?: string) => SHOW_PLACEHOLDERS || filled(s);
+  const hasDemo = !hasVideo && DEMOS[slug];
+  // Rows whose value is still an unfilled placeholder are left out on the live site.
   const meta: [string, React.ReactNode][] = [
     [t("meta.role"), p.role[locale]],
-    [t("meta.built"), <PlaceholderText key="b">{p.built[locale]}</PlaceholderText>],
-    ...(study ? ([[t("meta.timeline"), <PlaceholderText key="t">{study.timeline[locale]}</PlaceholderText>]] as [string, React.ReactNode][]) : []),
-    [t("meta.team"), <PlaceholderText key="tm">{p.team[locale]}</PlaceholderText>],
-    [t("meta.stack"), <Chips key="s" items={p.stack} />],
+    ...(keep(p.built[locale]) ? ([[t("meta.built"), <PlaceholderText key="b">{p.built[locale]}</PlaceholderText>]] as [string, React.ReactNode][]) : []),
+    ...(study && keep(study.timeline[locale]) ? ([[t("meta.timeline"), <PlaceholderText key="t">{study.timeline[locale]}</PlaceholderText>]] as [string, React.ReactNode][]) : []),
+    ...(keep(p.team[locale]) ? ([[t("meta.team"), <PlaceholderText key="tm">{p.team[locale]}</PlaceholderText>]] as [string, React.ReactNode][]) : []),
+    ...(p.stack.some(keep) ? ([[t("meta.stack"), <Chips key="s" items={p.stack} />]] as [string, React.ReactNode][]) : []),
     [
       t("meta.links"),
       <span key="l" className="flex flex-wrap gap-x-5 gap-y-2">
@@ -143,15 +150,31 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
           </div>
         </header>
 
-        <ViewTransition name={`media-${slug}`} share="morph" default="none">
-          <div className="mt-12 md:mt-16">
-            {hasVideo && p.media ? (
-              <DossierVideo webm={p.media.webm} mp4={p.media.mp4} poster={p.media.poster} label={p.media.alt[locale]} />
-            ) : (
-              <Cover p={p} index={index} pending={tw("mediaMissing")} always className="aspect-[16/10] md:aspect-[16/8]" />
-            )}
-          </div>
-        </ViewTransition>
+        {/* Media: a real recording if there is one, else a live illustration, else nothing on the live site. */}
+        {(hasVideo || hasDemo || SHOW_PLACEHOLDERS) && (
+          <ViewTransition name={`media-${slug}`} share="morph" default="none">
+            <div className="mt-12 md:mt-16">
+              {hasVideo && p.media ? (
+                <DossierVideo webm={p.media.webm} mp4={p.media.mp4} poster={p.media.poster} label={p.media.alt[locale]} />
+              ) : hasDemo ? (
+                <figure className="card overflow-hidden bg-sunken">
+                  <figcaption className="t-mono flex items-center justify-between border-b border-line px-5 py-3 text-[10.5px] text-muted">
+                    <span>{t("demo.label")}</span>
+                    <span className="inline-flex items-center gap-2 text-faint">
+                      <span className="size-1.5 rounded-full bg-accent shadow-[0_0_6px_rgba(255,90,31,.8)]" aria-hidden />
+                      {t("demo.running")}
+                    </span>
+                  </figcaption>
+                  <div className="min-h-[340px] p-5 md:p-8">
+                    <EnquiryDemo copy={t.raw("demo") as EnquiryDemoCopy} />
+                  </div>
+                </figure>
+              ) : (
+                <Cover p={p} index={index} pending={tw("mediaMissing")} always className="aspect-[16/10] md:aspect-[16/8]" />
+              )}
+            </div>
+          </ViewTransition>
+        )}
 
         {/* Summary + meta table */}
         <div className="grid-12 mt-16 gap-y-12 md:mt-24">

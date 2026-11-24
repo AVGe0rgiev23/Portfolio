@@ -7,7 +7,7 @@
     "skip": "Skip to content",
     "home": "Alex Georgiev, home",
     "work": "Work",
-    "services": "Services",
+    "services": "AGility",
     "about": "About",
     "contact": "Contact",
     "book": "Book a call",
@@ -17,29 +17,17 @@
     "language": "Language",
     "switchTo": "Switch to Bulgarian",
     "palette": "Open command palette",
-    "cv": "Download CV",
-    "studies": "Education"
+    "cv": "Download CV"
   },
   "island": {
     "available": "Available for work",
     "hero": "Available for work",
-    "proof": "Stack & facts",
     "work": "Selected work",
-    "services": "Services",
-    "process": "Process",
-    "capabilities": "Capabilities",
-    "milestones": "Milestones",
+    "services": "AGility",
     "about": "About",
-    "contact": "Reply within 24h",
-    "what": "What I do",
-    "studies": "Education"
-  },
-  "preloader": {
-    "boot": "initialising agility.os",
-    "skip": "Press any key to skip"
+    "contact": "Reply within 24h"
   },
   "hero": {
-    "tag": "AI automation · Python · Founder",
     "openTo": "Open to remote · part-time or full-time · AI, automation & Python roles",
     "openToShort": "Open to remote AI & Python roles",
     "rolesLabel": "Now",
@@ -52,8 +40,6 @@
     "ctaCv": "Download CV",
     "based": "Based in Burgas, BG",
     "time": "Local time",
-    "open": "Open to remote roles",
-    "founder": "AGility founder",
     "scroll": "Scroll",
     "channels": [
       "manual work",
@@ -62,26 +48,12 @@
       "slow replies",
       "guesswork"
     ],
-    "index": "Introduction",
     "hi": "Hi, I’m",
     "name": "Alex Georgiev.",
-    "intro": "Developer and founder from Burgas, Bulgaria. I’m a high-school student at VSCPI, specialising in AI programming. I also run AGility, an AI automation agency, and build systems that real businesses use every day.",
-    "ctaWhat": "What I do",
+    "intro": "I build AI automation that real businesses use. High-school student at VSCPI Burgas, specialising in AI programming, and founder of AGility.",
     "portraitAlt": "Portrait of Alex Georgiev",
-    "fig": "Fig. 01 — Alex Georgiev, Burgas"
-  },
-  "proof": {
-    "label": "Stack",
-    "facts": [
-      {
-        "n": "[[N]]",
-        "caption": "Shipped demos, live and on GitHub"
-      },
-      {
-        "n": "2",
-        "caption": "Competitions: IRO Vienna & John Atanasov"
-      }
-    ]
+    "fig": "Fig. 01 — Alex Georgiev, Burgas",
+    "email": "Email"
   },
   "work": {
     "index": "Selected work",
@@ -100,7 +72,8 @@
       "production": "In production",
       "competition": "Competition",
       "internal": "Internal",
-      "demo": "Client demo"
+      "demo": "Client demo",
+      "prototype": "Demo"
     },
     "role": "Role",
     "built": "I built",
@@ -111,55 +84,8 @@
     "open": "Open",
     "mediaMissing": "Media pending",
     "all": "All projects & code",
-    "allOn": "on GitHub"
-  },
-  "what": {
-    "index": "What I do",
-    "meta": "Four disciplines",
-    "title": "I build AI systems that <em>run</em> businesses — and I run one.",
-    "lede": "Four things, done properly. Hover or scroll through them; each one is running live on the right.",
-    "items": [
-      {
-        "k": "Automate",
-        "line": "Enquiries, leads and busywork, handled by AI and routed to the right person.",
-        "tag": "LLM · Viber · Meta · Email"
-      },
-      {
-        "k": "Build",
-        "line": "Chatbots, assistants and internal tools. From a prototype in days to production.",
-        "tag": "Next.js · TypeScript · RAG"
-      },
-      {
-        "k": "Analyse",
-        "line": "Python and Pandas on real data. Questions in, answers and charts out.",
-        "tag": "Python · Pandas · NumPy"
-      },
-      {
-        "k": "Run",
-        "line": "AGility, my agency. Scoping, clients and delivery: the business side, owned.",
-        "tag": "Founder · AGility"
-      }
-    ],
-    "demo": {
-      "inbound": "Inbound · any channel",
-      "message": "Hi, can you quote 40 office chairs delivered to Varna before the 15th? Need an answer today.",
-      "extracted": "Extracted",
-      "routed": "Routed to sales · Varna",
-      "draft": "Draft reply ready",
-      "chatQ": "Do you deliver outside Sofia?",
-      "chatA": "Yes. We deliver across Bulgaria, and Varna and Burgas have their own offices.",
-      "source": "source: delivery-policy.pdf",
-      "typing": "assistant is typing",
-      "fit": "fitting linear regression",
-      "ledger": "AGility · engagement",
-      "steps": [
-        "Discovery call",
-        "Scope & proposal",
-        "Prototype",
-        "Ship & integrate",
-        "Measure & improve"
-      ]
-    }
+    "allOn": "on GitHub",
+    "more": "More"
   },
   "case": {
     "back": "All work",
@@ -187,126 +113,108 @@
     "nextProject": "Next project",
     "live": "Live demo",
     "code": "Code",
-    "none": "Private / client work"
-  },
-  "studies": {
-    "index": "Education",
-    "meta": "VSCPI Burgas",
-    "title": "I learn it at school. I <em>prove</em> it at work.",
-    "lede": "What I study, the languages I work in, and the path so far.",
-    "record": "Academic record",
-    "recordNo": "Student file",
-    "rows": {
-      "school": "School",
-      "specialty": "Specialty",
-      "years": "Years",
-      "klass": "Class",
-      "modules": "Focus",
-      "languages": "Languages",
-      "certificates": "Certificates"
-    },
-    "native": "Native",
-    "pathLabel": "The path so far",
-    "now": "now",
-    "docs": {
-      "label": "Documents",
-      "cv": "CV (PDF)",
-      "europass": "CV (Europass format)",
-      "refs": "[[REFERENCE: teacher name and subject, contact on request]]"
+    "none": "Private / client work",
+    "demo": {
+      "label": "Live · how it works",
+      "running": "running",
+      "inbound": "Inbound · any channel",
+      "message": "Hi, can you quote 12 m of glass balustrade for a balcony in Varna? Need it before the 15th.",
+      "extracted": "Extracted",
+      "fields": [
+        [
+          "product",
+          "\"glass balustrade\""
+        ],
+        [
+          "length",
+          "\"12 m\""
+        ],
+        [
+          "city",
+          "\"Varna\""
+        ],
+        [
+          "urgency",
+          "\"before the 15th\""
+        ]
+      ],
+      "routed": "Routed to Varna office",
+      "draft": "Draft reply ready"
     }
   },
   "services": {
-    "index": "Services · AGility",
+    "index": "AGility",
     "meta": "For businesses",
-    "title": "What AGility <em>builds</em> for businesses.",
-    "lede": "Plain language, no jargon. If one of these sounds like your week, we should talk.",
-    "problem": "The problem",
-    "build": "What I build",
+    "title": "<em>AGility</em>, my agency.",
+    "lede": "AI automation for businesses, in plain language. If one of these sounds like your week, we should talk.",
     "result": "Typical result",
     "visit": "Visit AGility",
-    "book": "Book a call",
-    "processLabel": "How a project runs",
-    "steps": [
-      {
-        "k": "Diagnose",
-        "v": "One call and a look at how work actually flows today. I find the one bottleneck worth automating first.",
-        "art": [
-          "Map the channels",
-          "Find the bottleneck",
-          "Agree what ‘done’ means"
-        ]
-      },
-      {
-        "k": "Prototype in days",
-        "v": "A working version on your real data, fast, so you can react to something real instead of a document.",
-        "art": []
-      },
-      {
-        "k": "Ship & integrate",
-        "v": "Connected to the tools you already use. Deployed, monitored, documented.",
-        "art": [
-          "build  ✓ compiled",
-          "test   ✓ 0 failed",
-          "deploy ✓ production",
-          "notify ✓ team"
-        ]
-      },
-      {
-        "k": "Measure & improve",
-        "v": "We track the number that matters and keep improving it after launch.",
-        "art": []
-      }
-    ]
+    "book": "Book a call"
   },
   "about": {
     "index": "About",
-    "meta": "The longer version",
     "title": "I’d rather own an outcome than <em>tick</em> a task.",
-    "toggleLong": "Full story",
-    "toggleShort": "In 30 seconds",
     "paras": [
-      "I live on my own in Burgas and run my life the way I run AGility: I decide, I own it, and I fix what breaks.",
-      "I’m a high-school student at VSCPI, specialising in AI programming. School gives me the fundamentals: Python, NumPy, Pandas, regression. AGility is where I prove them on real businesses.",
-      "I use AI tools like Claude Code and LLM APIs to ship fast, but I understand and own every system I build. When something breaks, I know where to look.",
-      "What I’m looking for: a remote team working on AI and automation, with real users and people I can learn from. AGility keeps running alongside school."
-    ],
-    "bullets": [
-      "High-school student · VSCPI Burgas · AI programming",
-      "Founder of AGility, an AI automation agency",
-      "Python, Pandas, LLM APIs, Next.js. Ships real systems",
-      "IRO Vienna (team of 3) · John Atanasov National IT Tournament (Dec 2026)",
-      "Open to remote AI / automation / Python roles"
+      "I run my work the way I run AGility: I decide, I own it, and I fix what breaks.",
+      "School gives me the fundamentals: Python, NumPy, Pandas, regression. AGility is where I prove them on real businesses.",
+      "I use AI tools like Claude Code and LLM APIs to ship fast, but I understand and own every system I build. When something breaks, I know where to look."
     ],
     "both": "Most developers can build it. Most founders can sell it. <em>I do both.</em>",
-    "learningK": "Currently learning",
-    "learningList": [
-      "Machine learning fundamentals",
-      "[[OTHER: what you are learning now]]"
+    "meta": "Who I am",
+    "edu": {
+      "education": "Education",
+      "languages": "Languages",
+      "certificates": "Certificates",
+      "native": "native",
+      "cv": "CV (PDF)",
+      "europass": "CV (Europass)"
+    },
+    "nowK": "Now",
+    "now": [
+      {
+        "k": "Building",
+        "v": "Scamly, for the John Atanasov National IT Tournament, December 2026."
+      },
+      {
+        "k": "Learning",
+        "v": "Machine learning fundamentals. [[OTHER: what you are learning now]]"
+      },
+      {
+        "k": "Working with",
+        "v": "Claude Code, Git & GitHub, Vercel, VS Code, Obsidian"
+      },
+      {
+        "k": "Outside code",
+        "v": "[[INTERESTS: what you do when you're not building]]"
+      }
     ],
-    "learningNote": "Being honest about level is part of the job.",
-    "toolsK": "Tools",
-    "toolsList": [
-      "Claude Code",
-      "Git & GitHub",
-      "Vercel",
-      "VS Code",
-      "Obsidian",
-      "[[OTHER TOOL]]"
-    ]
+    "nextK": "Next",
+    "next": [
+      {
+        "k": "Looking for",
+        "v": "A remote team working on AI and automation, with real users and people I can learn from."
+      },
+      {
+        "k": "Studies",
+        "v": "University abroad. [[FIELD AND COUNTRY: e.g. Computer Science in the Netherlands]]"
+      },
+      {
+        "k": "Long term",
+        "v": "[[LONG-TERM GOAL: what you want to build or become]]"
+      },
+      {
+        "k": "AGility",
+        "v": "Keeps running alongside school."
+      }
+    ],
+    "pathLabel": "The path so far",
+    "pathNow": "now"
   },
   "contact": {
     "index": "Contact",
     "meta": "Reply within 24h",
     "title": "Have a role, a project or a <em>problem</em> worth automating?",
-    "lede": "Two ways in. Pick the one that fits.",
-    "companies": {
-      "k": "Hire me",
-      "v": "Hiring for AI, automation or Python, or need my CV for a school or programme? Everything is here."
-    },
-    "business": {
-      "k": "Work with AGility",
-      "v": "Tell me what’s slowing your business down."
-    },
+    "lede": "Hiring, or have a business problem worth automating? Either way, start here.",
     "email": "Email",
     "copy": "Copy email",
     "copied": "Copied ✓",
@@ -326,7 +234,9 @@
       "rate": "Too many messages. Try again in a few minutes.",
       "invalid": "Please check the highlighted fields.",
       "notConfigured": "The form isn’t connected yet. Please email me directly."
-    }
+    },
+    "github": "GitHub",
+    "formK": "Or write here"
   },
   "footer": {
     "rights": "All rights reserved.",

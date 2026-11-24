@@ -11,7 +11,7 @@ import { cn } from "@/lib/cn";
 import { StatusIsland } from "./status-island";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const LINKS = ["work", "studies", "services", "about", "contact"] as const;
+const LINKS = ["work", "about", "services", "contact"] as const;
 const noop = () => () => {};
 
 export function openPalette() {

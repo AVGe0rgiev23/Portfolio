@@ -5,7 +5,7 @@ import { RoleMorph } from "./role-morph";
 import { Portrait } from "./portrait";
 import { SignalCanvas } from "@/components/three/signal-canvas";
 import { LocalTime } from "@/components/ui/local-time";
-import { site } from "@/content/site";
+import { site, isSet } from "@/content/site";
 
 function ChannelLabels({ layout, names, className }: { layout: FieldLayout; names: string[]; className: string }) {
   return (
@@ -24,11 +24,16 @@ function ChannelLabels({ layout, names, className }: { layout: FieldLayout; name
   );
 }
 
-/** 00 — Introduction. Who Alex is, first. What he does comes right after. */
+/** 00 — Introduction: who Alex is, what he does, and where to find him. */
 export async function Hero() {
   const t = await getTranslations("hero");
   const roles = t.raw("roles") as string[];
   const channels = t.raw("channels") as string[];
+  const links: [string, string][] = [
+    ["GitHub", site.socials.github],
+    ["LinkedIn", site.socials.linkedin],
+    ...(isSet(site.email) ? ([[t("email"), `mailto:${site.email}`]] as [string, string][]) : []),
+  ];
 
   return (
     <section
@@ -87,37 +92,45 @@ export async function Hero() {
 
             <div className="fade-boot mt-8 flex flex-wrap gap-3" style={{ ["--d" as string]: 4 }}>
               <a
-                href="#what"
+                href="#work"
                 className="t-mono group inline-flex h-12 items-center gap-3 rounded-[2px] bg-text px-5 text-bg transition-colors hover:bg-white"
               >
-                {t("ctaWhat")}
+                {t("ctaWork")}
                 <span aria-hidden className="transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-y-0.5">
                   ↓
                 </span>
               </a>
               <a
-                href="#work"
-                className="t-mono group inline-flex h-12 items-center gap-3 rounded-[2px] border border-line-strong px-5 text-text transition-colors hover:border-text/50"
-              >
-                {t("ctaWork")}
-                <span aria-hidden className="transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-x-1">
-                  →
-                </span>
-              </a>
-              <a
                 href={site.cv}
                 download
-                className="t-mono inline-flex h-12 items-center gap-2 px-3 text-muted underline decoration-line-strong underline-offset-[6px] transition-colors hover:text-text hover:decoration-accent"
+                className="t-mono group inline-flex h-12 items-center gap-3 rounded-[2px] border border-line-strong px-5 text-text transition-colors hover:border-text/50"
               >
-                {t("ctaCv")} ↓
+                {t("ctaCv")}
+                <span aria-hidden className="transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-y-0.5">
+                  ↓
+                </span>
               </a>
             </div>
+
+            <ul className="fade-boot t-mono mt-6 flex flex-wrap gap-x-6 gap-y-2 text-muted" style={{ ["--d" as string]: 5 }}>
+              {links.map(([label, href]) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                    className="underline decoration-line-strong underline-offset-[6px] transition-colors hover:text-text hover:decoration-accent"
+                  >
+                    {label} {href.startsWith("http") ? "↗" : ""}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
         <div
           className="fade-boot t-mono mt-10 flex items-center justify-between gap-6 border-t border-line py-4 text-muted md:mt-12"
-          style={{ ["--d" as string]: 5 }}
+          style={{ ["--d" as string]: 6 }}
         >
           <ul className="flex flex-wrap gap-x-6 gap-y-1.5">
             <li>{t("based")}</li>
@@ -125,7 +138,7 @@ export async function Hero() {
               {t("time")} <LocalTime className="tabular-nums text-text" />
             </li>
           </ul>
-          <a href="#what" aria-label={t("scroll")} className="group flex shrink-0 items-center gap-3 text-faint transition-colors hover:text-text">
+          <a href="#work" aria-label={t("scroll")} className="group flex shrink-0 items-center gap-3 text-faint transition-colors hover:text-text">
             <span className="hidden sm:inline">{t("scroll")}</span>
             <span className="scroll-cue relative block h-10 w-px overflow-hidden bg-line-strong" aria-hidden>
               <span className="absolute left-1/2 top-0 size-[3px] -translate-x-1/2 rounded-full bg-accent" />

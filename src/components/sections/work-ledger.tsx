@@ -92,10 +92,14 @@ export function Cover({
   );
 }
 
+const linkOf = (url?: string) => (url && !isPlaceholder(url) ? url : null);
+
 export async function WorkLedger() {
   const t = await getTranslations("work");
   const raw = await getLocale();
   const locale = isLocale(raw) ? raw : "en";
+  const featured = projects.filter((p) => p.featured);
+  const more = projects.filter((p) => !p.featured);
 
   return (
     <section
@@ -108,7 +112,7 @@ export async function WorkLedger() {
       <div className="frame">
         <SectionHead
           id="work-title"
-          n="02"
+          n="01"
           label={t("index")}
           meta={t("meta")}
           title={t.rich("title", { em: (c) => <em className="em">{c}</em> })}
@@ -126,11 +130,11 @@ export async function WorkLedger() {
         </div>
 
         <ol className="dossier-list mt-10 border-t border-line md:mt-0 md:border-t-0">
-          {projects.map((p, i) => {
+          {featured.map((p, i) => {
             const index = String(i + 1).padStart(2, "0");
             const name = p.name[locale];
-            const live = p.links.live && !isPlaceholder(p.links.live) ? p.links.live : null;
-            const code = p.links.code && !isPlaceholder(p.links.code) ? p.links.code : null;
+            const live = linkOf(p.links.live);
+            const code = linkOf(p.links.code);
             const hasVideo = Boolean(p.media?.mp4 || p.media?.webm);
             return (
               <li key={p.slug} className="dossier group relative border-b border-line">
@@ -159,7 +163,23 @@ export async function WorkLedger() {
                         </ViewTransition>
                       </Link>
                     </h3>
-                    <p className="t-mono col-span-4 text-[10.5px] text-muted md:col-span-3 md:pr-4">{p.kind[locale]}</p>
+                    <div className="col-span-4 flex flex-col gap-2.5 md:col-span-3 md:pr-4">
+                      <p className="t-mono text-[10.5px] text-muted">{p.kind[locale]}</p>
+                      {(live || code) && (
+                        <p className="t-mono relative z-10 flex gap-4 text-[10.5px]">
+                          {live && (
+                            <a href={live} target="_blank" rel="noreferrer" className="text-text underline decoration-accent underline-offset-4 hover:text-accent">
+                              {t("live")} ↗
+                            </a>
+                          )}
+                          {code && (
+                            <a href={code} target="_blank" rel="noreferrer" className="text-muted underline decoration-line-strong underline-offset-4 hover:text-text">
+                              {t("code")} ↗
+                            </a>
+                          )}
+                        </p>
+                      )}
+                    </div>
                     <span className="t-mono col-span-1 hidden text-muted md:block">
                       <PlaceholderText>{p.year}</PlaceholderText>
                     </span>
@@ -244,6 +264,49 @@ export async function WorkLedger() {
             );
           })}
         </ol>
+
+        {more.length > 0 && (
+          <div className="mt-16 md:mt-24">
+            <p className="t-mono mb-4 text-muted">{t("more")}</p>
+            <ul className="border-t border-line">
+              {more.map((p) => {
+                const live = linkOf(p.links.live);
+                const code = linkOf(p.links.code);
+                return (
+                  <li
+                    key={p.slug}
+                    className="group relative grid grid-cols-4 items-baseline gap-x-4 gap-y-1.5 border-b border-line py-4 md:grid-cols-12 md:gap-x-6"
+                  >
+                    <h3 className="col-span-4 font-serif text-[clamp(1.35rem,2vw,1.75rem)] leading-tight tracking-[-0.015em] md:col-span-4 md:col-start-2">
+                      <Link
+                        href={`/work/${p.slug}`}
+                        className="inline-block transition-transform duration-500 ease-[var(--ease-out)] after:absolute after:inset-0 after:content-[''] group-hover:translate-x-1.5"
+                      >
+                        {p.name[locale]}
+                      </Link>
+                    </h3>
+                    <p className="t-mono col-span-4 text-[10.5px] text-muted md:col-span-4">{p.kind[locale]}</p>
+                    <p className="t-mono relative z-10 col-span-2 flex gap-4 text-[10.5px] md:col-span-2">
+                      {live && (
+                        <a href={live} target="_blank" rel="noreferrer" className="text-text hover:text-accent">
+                          {t("live")} ↗
+                        </a>
+                      )}
+                      {code && (
+                        <a href={code} target="_blank" rel="noreferrer" className="text-muted hover:text-text">
+                          {t("code")} ↗
+                        </a>
+                      )}
+                    </p>
+                    <span className="col-span-2 justify-self-end md:col-span-1">
+                      <StatusChip status={p.status} label={t(`status.${p.status}`)} />
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
 
         <a
           href={site.socials.github}

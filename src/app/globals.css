@@ -276,11 +276,6 @@ html.is-ruled .ruled__col {
   transition-delay: calc(var(--i) * 45ms);
 }
 
-/* ── Marquee ──────────────────────────────────────────────── */
-@keyframes marquee {
-  to { transform: translate3d(-50%, 0, 0); }
-}
-
 /* ── Reduced motion: fades only ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -315,37 +310,6 @@ html.lenis body {
   overflow: clip;
 }
 
-/* ── Preloader ────────────────────────────────────────────── */
-.preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  display: none;
-  align-items: flex-end;
-  background: var(--bg);
-  transition: opacity 0.45s var(--ease-out);
-}
-html.is-booting .preloader,
-html.is-unbooting .preloader {
-  display: flex;
-}
-html.is-unbooting .preloader {
-  opacity: 0;
-  pointer-events: none;
-}
-.preloader__caret {
-  display: inline-block;
-  width: 0.55em;
-  height: 1em;
-  margin-left: 2px;
-  vertical-align: -0.15em;
-  background: var(--accent);
-  animation: caret 0.9s steps(1) infinite;
-}
-@keyframes caret {
-  50% { opacity: 0; }
-}
-
 /* ── Masked line reveal (hero; plays only after the boot sequence) ─ */
 .reveal {
   display: block;
@@ -370,16 +334,10 @@ html.is-booting .reveal > span {
 html.is-booting .fade-boot {
   transform: translate3d(0, 14px, 0);
 }
-/* If JS never runs, the boot sequence dismisses itself. */
-html.is-booting .preloader {
-  animation: boot-failsafe 0.4s 3s forwards;
-}
+/* If JS never runs, the entrance releases itself. */
 html.is-booting .reveal > span,
 html.is-booting .fade-boot {
   animation: boot-failsafe-content 0s 3.2s forwards;
-}
-@keyframes boot-failsafe {
-  to { opacity: 0; visibility: hidden; }
 }
 @keyframes boot-failsafe-content {
   to { transform: none; }
@@ -606,20 +564,6 @@ html[lang="bg"] .hero-name {
   }
 }
 
-/* CEFR scale (an official standard, not a self-rated % bar) */
-.cefr {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 3px;
-}
-.cefr > span {
-  height: 3px;
-  background: var(--line-strong);
-}
-.cefr > span[data-on="1"] {
-  background: var(--text);
-}
-
 /* ── Services: spotlight cards ────────────────────────────── */
 .spot {
   --mx: 50%;
@@ -636,59 +580,6 @@ html[lang="bg"] .hero-name {
 }
 .spot:hover::before {
   opacity: 1;
-}
-
-/* ── Process artefacts (play when the panel is [data-active="1"]) ── */
-.art-check__box {
-  color: transparent;
-  transition: all 0.4s var(--ease-out);
-  transition-delay: calc(var(--k) * 380ms + 200ms);
-}
-.process-step[data-active="1"] .art-check__box {
-  color: var(--bg);
-  background: var(--accent);
-  border-color: var(--accent);
-}
-.art-wire__bar {
-  border-radius: 2px;
-  background: rgba(237, 232, 223, 0.08);
-  border: 1px dashed rgba(237, 232, 223, 0.18);
-  transition: all 0.6s var(--ease-out);
-  transition-delay: calc(var(--k) * 260ms + 200ms);
-}
-.process-step[data-active="1"] .art-wire__bar {
-  background: rgba(237, 232, 223, 0.16);
-  border-style: solid;
-  border-color: rgba(237, 232, 223, 0.22);
-}
-.process-step[data-active="1"] .art-wire__cta {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-.art-log {
-  opacity: 0;
-  transform: translate3d(-6px, 0, 0);
-  transition: all 0.4s var(--ease-out);
-  transition-delay: calc(var(--k) * 320ms + 200ms);
-}
-.process-step[data-active="1"] .art-log {
-  opacity: 1;
-  transform: none;
-}
-.art-bar {
-  height: var(--h);
-  transform: scaleY(0.1);
-  transform-origin: bottom;
-  transition: transform 0.9s var(--ease-out);
-  transition-delay: calc(var(--k) * 90ms + 200ms);
-}
-.process-step[data-active="1"] .art-bar {
-  transform: scaleY(1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .art-check__box { color: var(--bg); background: var(--accent); border-color: var(--accent); }
-  .art-log { opacity: 1; transform: none; }
-  .art-bar { transform: none; }
 }
 
 /* Next-project link: preview floats in on hover */
@@ -832,7 +723,6 @@ button:disabled {
   .no-print,
   .grain,
   .ruled,
-  .preloader,
   [role="status"] {
     display: none !important;
   }

@@ -11,7 +11,7 @@ import { site, isSet } from "@/content/site";
 import { stack } from "@/content/stack";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { RuledGrid } from "@/components/layout/ruled-grid";
-import { Preloader } from "@/components/layout/preloader";
+import { Entrance } from "@/components/layout/entrance";
 import { Nav } from "@/components/layout/nav";
 import { RevealObserver } from "@/components/motion/reveal-observer";
 import { Footer } from "@/components/layout/footer";
@@ -54,8 +54,8 @@ export const viewport: Viewport = {
 };
 
 /**
- * Runs before first paint. Decides whether the boot sequence plays:
- * first visit in this tab + motion allowed → preloader + ruled-grid draw-in.
+ * Runs before first paint. Decides whether the entrance plays:
+ * first visit in this tab + motion allowed → hero lines + ruled-grid draw-in.
  * Otherwise content is static and readable immediately.
  */
 const bootScript = `(function(){var d=document.documentElement;var rm=false;try{rm=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}var seen=false;try{seen=sessionStorage.getItem('ag:booted')==='1'}catch(e){}if(!seen&&!rm){d.classList.add('is-booting','is-ruling')}else{d.classList.add('is-booted','is-ruled')}})();`;
@@ -114,7 +114,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
             {t("skip")}
           </a>
           <RuledGrid />
-          <Preloader />
+          <Entrance />
           <SmoothScroll>
             <Suspense fallback={null}>
               <Nav />

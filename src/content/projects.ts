@@ -1,14 +1,14 @@
 import { SHOW_PLACEHOLDERS, filled, type L } from "./types";
 
 /**
- * Selected work. Order here = order on the site.
+ * Selected work. Order here = order on the site. Featured projects first.
  *
  * Honesty rules:
  * - Never invent metrics, clients or results. Use [[METRIC: …]] / [[RESULT]] until a number is true.
  * - The railings client is anonymised. No brand name, logo or domain — anywhere, including alt text.
  */
 
-export type ProjectStatus = "live" | "production" | "competition" | "internal" | "demo";
+export type ProjectStatus = "live" | "production" | "competition" | "internal" | "demo" | "prototype";
 
 export type Project = {
   slug: string;
@@ -34,6 +34,8 @@ export type Project = {
   };
   /** Projects with a full /work/[slug] case study (Phase 4). */
   caseStudy?: boolean;
+  /** Big row with links on the homepage. The rest go in the compact "More" list. */
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
@@ -58,6 +60,7 @@ export const projects: Project[] = [
     },
     team: { en: "Solo", bg: "Самостоятелно" },
     links: {},
+    featured: true,
     media: {
       alt: {
         en: "Dashboard showing enquiries from five channels merged into one inbox, each tagged with product, city and urgency",
@@ -83,7 +86,8 @@ export const projects: Project[] = [
     role: { en: "Co-developer · team of 2", bg: "Съразработчик · екип от двама" },
     built: { en: "[[WHAT YOU PERSONALLY BUILT ON SCAMLY]]", bg: "[[КАКВО ИЗГРАДИ ЛИЧНО В SCAMLY]]" },
     team: { en: "Alex Georgiev + [[TEAMMATE]]", bg: "Алекс Георгиев + [[СЪОТБОРНИК]]" },
-    links: { code: "[[GITHUB]]" },
+    links: { live: "https://scamly-ochre.vercel.app", code: "https://github.com/AVGe0rgiev23/Scamly" },
+    featured: true,
     media: {
       alt: {
         en: "Scamly app screen warning about a suspicious incoming call",
@@ -103,20 +107,8 @@ export const projects: Project[] = [
     role: { en: "Solo", bg: "Самостоятелно" },
     built: { en: "[[WHAT YOU BUILT]]", bg: "[[КАКВО ИЗГРАДИ]]" },
     team: { en: "Solo", bg: "Самостоятелно" },
-    links: { live: "[[URL]]", code: "[[GITHUB]]" },
-  },
-  {
-    slug: "ai-chatbot",
-    name: { en: "AI Chatbot for businesses", bg: "AI чатбот за бизнеси" },
-    kind: { en: "Product demo", bg: "Демо продукт" },
-    year: "2026",
-    stack: ["[[STACK]]"],
-    status: "live",
-    summary: { en: "[[ONE-LINE DESCRIPTION]]", bg: "[[ЕДНО ИЗРЕЧЕНИЕ ОПИСАНИЕ]]" },
-    role: { en: "Solo", bg: "Самостоятелно" },
-    built: { en: "[[WHAT YOU BUILT]]", bg: "[[КАКВО ИЗГРАДИ]]" },
-    team: { en: "Solo", bg: "Самостоятелно" },
-    links: { live: "[[URL]]", code: "[[GITHUB]]" },
+    links: { live: "https://supportai-beta.vercel.app", code: "https://github.com/AVGe0rgiev23/AIsupport" },
+    featured: true,
   },
   {
     slug: "ai-data-analyst",
@@ -124,7 +116,8 @@ export const projects: Project[] = [
     kind: { en: "Product demo", bg: "Демо продукт" },
     year: "2026",
     stack: ["Python", "Pandas", "LLM API", "[[STACK]]"],
-    status: "live",
+    // "prototype" until there is a public URL; switch to "live" when links.live is real.
+    status: "prototype",
     summary: {
       en: "Ask questions about a dataset in plain language and get answers, tables and charts back. Python and Pandas do the real work under the hood. [[DETAILS]]",
       bg: "Задаваш въпроси за набор от данни на обикновен език и получаваш отговори, таблици и графики. Реалната работа отдолу я вършат Python и Pandas. [[ДЕТАЙЛИ]]",
@@ -132,7 +125,22 @@ export const projects: Project[] = [
     role: { en: "Solo", bg: "Самостоятелно" },
     built: { en: "[[WHAT YOU BUILT]]", bg: "[[КАКВО ИЗГРАДИ]]" },
     team: { en: "Solo", bg: "Самостоятелно" },
-    links: { live: "[[URL]]", code: "[[GITHUB]]" },
+    links: { live: "[[URL]]", code: "https://github.com/AVGe0rgiev23/ai-data-analyst" },
+    featured: true,
+  },
+  {
+    slug: "ai-chatbot",
+    name: { en: "AI Chatbot for businesses", bg: "AI чатбот за бизнеси" },
+    kind: { en: "Product demo", bg: "Демо продукт" },
+    year: "2026",
+    stack: ["[[STACK]]"],
+    // "prototype" until there is a public URL; switch to "live" when links.live is real.
+    status: "prototype",
+    summary: { en: "[[ONE-LINE DESCRIPTION]]", bg: "[[ЕДНО ИЗРЕЧЕНИЕ ОПИСАНИЕ]]" },
+    role: { en: "Solo", bg: "Самостоятелно" },
+    built: { en: "[[WHAT YOU BUILT]]", bg: "[[КАКВО ИЗГРАДИ]]" },
+    team: { en: "Solo", bg: "Самостоятелно" },
+    links: { live: "[[URL]]", code: "https://github.com/AVGe0rgiev23/AI-Chat-Bot---Demo-version-" },
   },
   {
     slug: "agility-os",
@@ -148,6 +156,7 @@ export const projects: Project[] = [
     role: { en: "Founder · sole developer", bg: "Основател · единствен разработчик" },
     built: { en: "All of it, for daily use at AGility.", bg: "Всичко, за ежедневна работа в AGility." },
     team: { en: "Solo", bg: "Самостоятелно" },
+    // Code: github.com/AVGe0rgiev23/AGility-system- — add it here once you're happy for it to be public-facing.
     links: {},
   },
   {
@@ -167,6 +176,7 @@ export const projects: Project[] = [
       bg: "Електрическата част: окабеляване и електроника, камерата, батерията и разпределението на захранването.",
     },
     team: { en: "Team of 3", bg: "Екип от трима" },
+    // If github.com/AVGe0rgiev23/RobotLine is this robot, add it as links.code.
     links: {},
   },
   {
@@ -175,7 +185,8 @@ export const projects: Project[] = [
     kind: { en: "30s vertical ad · coded motion", bg: "30 сек. вертикална реклама · motion в код" },
     year: "2026",
     stack: ["Motion graphics in code", "[[STACK]]"],
-    status: "live",
+    // "prototype" until the film has a public URL (or a video file in /public/work).
+    status: "prototype",
     summary: {
       en: "A 30-second vertical ad built entirely as coded motion graphics. No stock footage, no AI video. Every frame is designed.",
       bg: "30-секундна вертикална реклама, изградена изцяло като motion графика в код. Без стокови кадри, без AI видео. Всеки кадър е проектиран.",
